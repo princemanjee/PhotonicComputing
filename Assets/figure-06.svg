@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Figure 6 placeholder: Photonic tensor core mesh">
+  <defs>
+    <linearGradient id="bg6" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffd9e6"/>
+      <stop offset="50%" stop-color="#e0d4ff"/>
+      <stop offset="100%" stop-color="#c6f5e3"/>
+    </linearGradient>
+    <filter id="blur6"><feGaussianBlur stdDeviation="10"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg6)"/>
+  <g opacity="0.25" filter="url(#blur6)">
+    <circle cx="200" cy="450" r="180" fill="#06b6d4"/>
+    <circle cx="1400" cy="450" r="180" fill="#ec4899"/>
+  </g>
+  <g stroke="#06b6d4" stroke-width="6" opacity="0.9">
+    <line x1="100" y1="280" x2="300" y2="280"/>
+    <line x1="100" y1="380" x2="300" y2="380"/>
+    <line x1="100" y1="480" x2="300" y2="480"/>
+    <line x1="100" y1="580" x2="300" y2="580"/>
+  </g>
+  <g fill="rgba(255,255,255,0.65)" stroke="rgba(148,163,184,0.6)" stroke-width="2">
+    <rect x="340" y="240" width="140" height="80" rx="12"/>
+    <rect x="340" y="340" width="140" height="80" rx="12"/>
+    <rect x="340" y="440" width="140" height="80" rx="12"/>
+    <rect x="340" y="540" width="140" height="80" rx="12"/>
+    <rect x="540" y="290" width="140" height="80" rx="12"/>
+    <rect x="540" y="390" width="140" height="80" rx="12"/>
+    <rect x="540" y="490" width="140" height="80" rx="12"/>
+    <rect x="740" y="240" width="140" height="80" rx="12"/>
+    <rect x="740" y="340" width="140" height="80" rx="12"/>
+    <rect x="740" y="440" width="140" height="80" rx="12"/>
+    <rect x="740" y="540" width="140" height="80" rx="12"/>
+    <rect x="940" y="290" width="140" height="80" rx="12"/>
+    <rect x="940" y="390" width="140" height="80" rx="12"/>
+    <rect x="940" y="490" width="140" height="80" rx="12"/>
+    <rect x="1140" y="340" width="140" height="80" rx="12"/>
+    <rect x="1140" y="440" width="140" height="80" rx="12"/>
+  </g>
+  <g font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#0f172a" text-anchor="middle">
+    <text x="410" y="285">&#952;</text><text x="410" y="385">&#952;</text><text x="410" y="485">&#952;</text><text x="410" y="585">&#952;</text>
+    <text x="610" y="335">&#952;</text><text x="610" y="435">&#952;</text><text x="610" y="535">&#952;</text>
+    <text x="810" y="285">&#952;</text><text x="810" y="385">&#952;</text><text x="810" y="485">&#952;</text><text x="810" y="585">&#952;</text>
+    <text x="1010" y="335">&#952;</text><text x="1010" y="435">&#952;</text><text x="1010" y="535">&#952;</text>
+    <text x="1210" y="385">&#952;</text><text x="1210" y="485">&#952;</text>
+  </g>
+  <g stroke="#ec4899" stroke-width="6" opacity="0.9">
+    <line x1="1280" y1="380" x2="1500" y2="380"/>
+    <line x1="1280" y1="480" x2="1500" y2="480"/>
+  </g>
+  <rect x="60" y="180" width="260" height="60" rx="12" fill="rgba(255,255,255,0.85)"/>
+  <text x="190" y="218" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="18" fill="#0f172a">input vector x</text>
+  <rect x="1280" y="180" width="260" height="60" rx="12" fill="rgba(255,255,255,0.85)"/>
+  <text x="1410" y="218" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="18" fill="#0f172a">output y = W x</text>
+  <rect x="600" y="700" width="400" height="80" rx="18" fill="rgba(255,255,255,0.85)"/>
+  <text x="800" y="735" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="600" font-size="17" fill="#0f172a">100+ GHz linear bandwidth</text>
+  <text x="800" y="762" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#475569">single-pass matrix-vector multiply</text>
+  <rect x="600" y="810" width="400" height="60" rx="18" fill="rgba(255,255,255,0.85)"/>
+  <text x="800" y="835" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="20" fill="#0f172a">Figure 6: Photonic Tensor Core</text>
+  <text x="800" y="858" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#475569">Mach-Zehnder interferometer mesh</text>
+</svg>

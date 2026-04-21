@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Figure 1 placeholder: AI data center with photonic interconnect">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffd9e6"/>
+      <stop offset="50%" stop-color="#e0d4ff"/>
+      <stop offset="100%" stop-color="#c6f5e3"/>
+    </linearGradient>
+    <linearGradient id="fiber1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+    <filter id="blur1"><feGaussianBlur stdDeviation="8"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg1)"/>
+  <g opacity="0.35" filter="url(#blur1)">
+    <circle cx="300" cy="250" r="120" fill="#06b6d4"/>
+    <circle cx="1300" cy="650" r="160" fill="#ec4899"/>
+    <circle cx="900" cy="200" r="90" fill="#f59e0b"/>
+  </g>
+  <rect x="120" y="300" width="200" height="400" rx="14" fill="rgba(255,255,255,0.55)" stroke="rgba(255,255,255,0.8)"/>
+  <rect x="360" y="260" width="200" height="440" rx="14" fill="rgba(255,255,255,0.55)" stroke="rgba(255,255,255,0.8)"/>
+  <rect x="1040" y="260" width="200" height="440" rx="14" fill="rgba(255,255,255,0.55)" stroke="rgba(255,255,255,0.8)"/>
+  <rect x="1280" y="300" width="200" height="400" rx="14" fill="rgba(255,255,255,0.55)" stroke="rgba(255,255,255,0.8)"/>
+  <path d="M 320 500 Q 800 180 1040 500" stroke="url(#fiber1)" stroke-width="6" fill="none" opacity="0.85"/>
+  <path d="M 320 550 Q 800 260 1040 550" stroke="url(#fiber1)" stroke-width="4" fill="none" opacity="0.7"/>
+  <path d="M 560 460 Q 800 320 1040 460" stroke="#10b981" stroke-width="5" fill="none" opacity="0.8"/>
+  <rect x="600" y="720" width="400" height="80" rx="18" fill="rgba(255,255,255,0.85)" stroke="rgba(255,255,255,1)"/>
+  <text x="800" y="755" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="22" fill="#0f172a">Figure 1</text>
+  <text x="800" y="785" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#1e293b">AI data center with photonic interconnect</text>
+  <rect x="40" y="40" width="260" height="64" rx="12" fill="rgba(255,255,255,0.85)"/>
+  <text x="170" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="600" font-size="18" fill="#0f172a">400 Gbps / lambda</text>
+  <rect x="1300" y="40" width="260" height="64" rx="12" fill="rgba(255,255,255,0.85)"/>
+  <text x="1430" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="600" font-size="18" fill="#0f172a">3.2 Tbps aggregate</text>
+</svg>

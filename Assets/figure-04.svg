@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Figure 4 placeholder: Silicon waveguide cross-section with WDM">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffd9e6"/>
+      <stop offset="50%" stop-color="#e0d4ff"/>
+      <stop offset="100%" stop-color="#c6f5e3"/>
+    </linearGradient>
+    <filter id="blur4"><feGaussianBlur stdDeviation="12"/></filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg4)"/>
+  <g opacity="0.25" filter="url(#blur4)">
+    <circle cx="200" cy="300" r="180" fill="#06b6d4"/>
+    <circle cx="1000" cy="600" r="200" fill="#ec4899"/>
+  </g>
+  <rect x="100" y="280" width="1000" height="360" rx="16" fill="rgba(255,255,255,0.4)" stroke="rgba(255,255,255,0.75)" stroke-width="2"/>
+  <rect x="100" y="380" width="1000" height="160" rx="8" fill="#334155" opacity="0.85"/>
+  <text x="120" y="710" font-family="system-ui, sans-serif" font-size="14" fill="#475569">buried oxide</text>
+  <text x="120" y="370" font-family="system-ui, sans-serif" font-size="14" fill="#475569">silicon core</text>
+  <g stroke-width="6" fill="none" opacity="0.9">
+    <line x1="100" y1="395" x2="1100" y2="395" stroke="#ef4444"/>
+    <line x1="100" y1="412" x2="1100" y2="412" stroke="#f97316"/>
+    <line x1="100" y1="429" x2="1100" y2="429" stroke="#f59e0b"/>
+    <line x1="100" y1="446" x2="1100" y2="446" stroke="#eab308"/>
+    <line x1="100" y1="463" x2="1100" y2="463" stroke="#84cc16"/>
+    <line x1="100" y1="480" x2="1100" y2="480" stroke="#10b981"/>
+    <line x1="100" y1="497" x2="1100" y2="497" stroke="#06b6d4"/>
+    <line x1="100" y1="514" x2="1100" y2="514" stroke="#6366f1"/>
+    <line x1="100" y1="531" x2="1100" y2="531" stroke="#ec4899"/>
+  </g>
+  <rect x="80" y="60" width="360" height="80" rx="14" fill="rgba(255,255,255,0.85)"/>
+  <text x="260" y="92" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="600" font-size="18" fill="#0f172a">ITU grid 193.10 THz</text>
+  <text x="260" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#475569">reference wavelength 1552.52 nm</text>
+  <rect x="480" y="60" width="300" height="80" rx="14" fill="rgba(255,255,255,0.85)"/>
+  <text x="630" y="92" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="600" font-size="18" fill="#0f172a">100 GHz spacing</text>
+  <text x="630" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#475569">8 channels shown</text>
+  <rect x="820" y="60" width="300" height="80" rx="14" fill="rgba(255,255,255,0.85)"/>
+  <text x="970" y="92" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="600" font-size="18" fill="#0f172a">1.6 Tb/s/mm&#178;</text>
+  <text x="970" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#475569">on-chip data density</text>
+  <rect x="400" y="800" width="400" height="70" rx="18" fill="rgba(255,255,255,0.85)"/>
+  <text x="600" y="830" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="20" fill="#0f172a">Figure 4</text>
+  <text x="600" y="855" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#1e293b">Silicon waveguide with WDM channels</text>
+</svg>

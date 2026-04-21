@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Figure 10 placeholder: Hybrid electronic-photonic architecture diagram">
+  <defs>
+    <linearGradient id="bg10" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffd9e6"/>
+      <stop offset="50%" stop-color="#e0d4ff"/>
+      <stop offset="100%" stop-color="#c6f5e3"/>
+    </linearGradient>
+    <filter id="blur10"><feGaussianBlur stdDeviation="12"/></filter>
+    <filter id="glow10"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg10)"/>
+  <g opacity="0.25" filter="url(#blur10)">
+    <circle cx="200" cy="600" r="200" fill="#06b6d4"/>
+    <circle cx="1400" cy="300" r="200" fill="#ec4899"/>
+  </g>
+  <rect x="100" y="260" width="320" height="400" rx="22" fill="rgba(51,65,85,0.9)"/>
+  <text x="260" y="305" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="22" fill="#f1f5f9">Electronic</text>
+  <text x="260" y="330" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#cbd5e1">CPU / GPU die</text>
+  <g fill="#64748b" stroke="#94a3b8" stroke-width="1">
+    <rect x="140" y="360" width="100" height="50" rx="6"/>
+    <rect x="260" y="360" width="100" height="50" rx="6"/>
+    <rect x="140" y="430" width="100" height="50" rx="6"/>
+    <rect x="260" y="430" width="100" height="50" rx="6"/>
+  </g>
+  <g fill="#f1f5f9" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle">
+    <text x="190" y="390">ALU</text>
+    <text x="310" y="390">Cache</text>
+    <text x="190" y="460">Control</text>
+    <text x="310" y="460">SRAM</text>
+  </g>
+  <text x="260" y="540" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#cbd5e1">nonlinear ops, memory, control</text>
+  <circle cx="460" cy="460" r="50" fill="#f59e0b" stroke="#fbbf24" stroke-width="4" filter="url(#glow10)"/>
+  <text x="460" y="454" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="15" fill="#0f172a">E to O</text>
+  <text x="460" y="476" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="13" fill="#0f172a">convert</text>
+  <rect x="560" y="280" width="480" height="360" rx="22" fill="rgba(255,255,255,0.55)" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
+  <text x="800" y="320" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="22" fill="#0f172a">Photonic Interconnect</text>
+  <text x="800" y="345" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#475569">8-channel WDM waveguide</text>
+  <g stroke-width="5" opacity="0.9">
+    <line x1="600" y1="390" x2="1000" y2="390" stroke="#ef4444"/>
+    <line x1="600" y1="420" x2="1000" y2="420" stroke="#f59e0b"/>
+    <line x1="600" y1="450" x2="1000" y2="450" stroke="#eab308"/>
+    <line x1="600" y1="480" x2="1000" y2="480" stroke="#10b981"/>
+    <line x1="600" y1="510" x2="1000" y2="510" stroke="#06b6d4"/>
+    <line x1="600" y1="540" x2="1000" y2="540" stroke="#3b82f6"/>
+    <line x1="600" y1="570" x2="1000" y2="570" stroke="#a855f7"/>
+    <line x1="600" y1="600" x2="1000" y2="600" stroke="#ec4899"/>
+  </g>
+  <circle cx="1080" cy="460" r="50" fill="#f59e0b" stroke="#fbbf24" stroke-width="4" filter="url(#glow10)"/>
+  <text x="1080" y="454" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="15" fill="#0f172a">O to E</text>
+  <text x="1080" y="476" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="13" fill="#0f172a">convert</text>
+  <rect x="1180" y="260" width="320" height="400" rx="22" fill="rgba(255,255,255,0.65)" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
+  <text x="1340" y="305" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="22" fill="#0f172a">Photonic Tensor</text>
+  <text x="1340" y="330" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#475569">Mach-Zehnder mesh</text>
+  <g fill="rgba(255,255,255,0.8)" stroke="rgba(148,163,184,0.6)" stroke-width="1.5">
+    <rect x="1220" y="360" width="60" height="40" rx="6"/>
+    <rect x="1290" y="360" width="60" height="40" rx="6"/>
+    <rect x="1360" y="360" width="60" height="40" rx="6"/>
+    <rect x="1430" y="360" width="60" height="40" rx="6"/>
+    <rect x="1255" y="410" width="60" height="40" rx="6"/>
+    <rect x="1325" y="410" width="60" height="40" rx="6"/>
+    <rect x="1395" y="410" width="60" height="40" rx="6"/>
+    <rect x="1220" y="460" width="60" height="40" rx="6"/>
+    <rect x="1290" y="460" width="60" height="40" rx="6"/>
+    <rect x="1360" y="460" width="60" height="40" rx="6"/>
+    <rect x="1430" y="460" width="60" height="40" rx="6"/>
+  </g>
+  <text x="1340" y="540" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#475569">linear ops at &gt;100 GHz</text>
+  <rect x="120" y="700" width="1360" height="90" rx="14" fill="rgba(255,255,255,0.9)"/>
+  <text x="800" y="730" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="17" fill="#0f172a">OE / EO bottleneck</text>
+  <text x="800" y="755" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#475569">laser wall-plug efficiency approximately 10 percent</text>
+  <text x="800" y="775" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#475569">target sub-picojoule per bit, 10 ps conversion at 100 GHz bandwidth</text>
+  <rect x="600" y="810" width="400" height="60" rx="16" fill="rgba(255,255,255,0.85)"/>
+  <text x="800" y="840" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="20" fill="#0f172a">Figure 10</text>
+  <text x="800" y="860" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#1e293b">Hybrid electronic-photonic architecture</text>
+</svg>

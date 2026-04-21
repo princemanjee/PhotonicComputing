@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Figure 2 placeholder: Timeline of computing evolution">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffd9e6"/>
+      <stop offset="50%" stop-color="#e0d4ff"/>
+      <stop offset="100%" stop-color="#c6f5e3"/>
+    </linearGradient>
+    <linearGradient id="ray2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="30%" stop-color="#ec4899"/>
+      <stop offset="70%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <filter id="blur2"><feGaussianBlur stdDeviation="10"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg2)"/>
+  <g opacity="0.3" filter="url(#blur2)">
+    <circle cx="200" cy="450" r="140" fill="#f59e0b"/>
+    <circle cx="1400" cy="450" r="180" fill="#10b981"/>
+  </g>
+  <rect x="100" y="440" width="1400" height="20" rx="10" fill="url(#ray2)"/>
+  <g font-family="system-ui, sans-serif" fill="#0f172a">
+    <g>
+      <circle cx="200" cy="450" r="24" fill="#f59e0b" stroke="white" stroke-width="4"/>
+      <rect x="120" y="340" width="160" height="70" rx="10" fill="rgba(255,255,255,0.85)"/>
+      <text x="200" y="368" text-anchor="middle" font-weight="700" font-size="18">1945</text>
+      <text x="200" y="392" text-anchor="middle" font-size="14">ENIAC</text>
+    </g>
+    <g>
+      <circle cx="400" cy="450" r="20" fill="#ec4899" stroke="white" stroke-width="3"/>
+      <rect x="320" y="500" width="160" height="70" rx="10" fill="rgba(255,255,255,0.85)"/>
+      <text x="400" y="528" text-anchor="middle" font-weight="700" font-size="18">1947</text>
+      <text x="400" y="552" text-anchor="middle" font-size="14">Transistor</text>
+    </g>
+    <g>
+      <circle cx="600" cy="450" r="20" fill="#06b6d4" stroke="white" stroke-width="3"/>
+      <rect x="520" y="340" width="160" height="70" rx="10" fill="rgba(255,255,255,0.85)"/>
+      <text x="600" y="368" text-anchor="middle" font-weight="700" font-size="18">1970</text>
+      <text x="600" y="392" text-anchor="middle" font-size="14">WDM concept</text>
+    </g>
+    <g>
+      <circle cx="800" cy="450" r="20" fill="#10b981" stroke="white" stroke-width="3"/>
+      <rect x="720" y="500" width="160" height="70" rx="10" fill="rgba(255,255,255,0.85)"/>
+      <text x="800" y="528" text-anchor="middle" font-weight="700" font-size="18">1996</text>
+      <text x="800" y="552" text-anchor="middle" font-size="14">DWDM commercial</text>
+    </g>
+    <g>
+      <circle cx="1000" cy="450" r="20" fill="#f59e0b" stroke="white" stroke-width="3"/>
+      <rect x="920" y="340" width="160" height="70" rx="10" fill="rgba(255,255,255,0.85)"/>
+      <text x="1000" y="368" text-anchor="middle" font-weight="700" font-size="18">2005</text>
+      <text x="1000" y="392" text-anchor="middle" font-size="14">Dennard ends</text>
+    </g>
+    <g>
+      <circle cx="1200" cy="450" r="20" fill="#ec4899" stroke="white" stroke-width="3"/>
+      <rect x="1120" y="500" width="160" height="70" rx="10" fill="rgba(255,255,255,0.85)"/>
+      <text x="1200" y="528" text-anchor="middle" font-weight="700" font-size="18">2024</text>
+      <text x="1200" y="552" text-anchor="middle" font-size="14">MAFT-ONN</text>
+    </g>
+    <g>
+      <circle cx="1400" cy="450" r="24" fill="#10b981" stroke="white" stroke-width="4"/>
+      <rect x="1320" y="340" width="160" height="70" rx="10" fill="rgba(255,255,255,0.85)"/>
+      <text x="1400" y="368" text-anchor="middle" font-weight="700" font-size="18">2025+</text>
+      <text x="1400" y="392" text-anchor="middle" font-size="14">400 Gbps / lambda</text>
+    </g>
+  </g>
+  <rect x="600" y="780" width="400" height="80" rx="18" fill="rgba(255,255,255,0.85)"/>
+  <text x="800" y="815" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="22" fill="#0f172a">Figure 2</text>
+  <text x="800" y="845" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#1e293b">Computing evolution timeline</text>
+</svg>

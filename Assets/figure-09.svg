@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Figure 9 placeholder: Silicon photonics market growth 2024-2029">
+  <defs>
+    <linearGradient id="bg9" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffd9e6"/>
+      <stop offset="50%" stop-color="#e0d4ff"/>
+      <stop offset="100%" stop-color="#c6f5e3"/>
+    </linearGradient>
+    <linearGradient id="area9" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ec4899" stop-opacity="0.55"/>
+      <stop offset="50%" stop-color="#f59e0b" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0.25"/>
+    </linearGradient>
+    <filter id="blur9"><feGaussianBlur stdDeviation="10"/></filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg9)"/>
+  <g opacity="0.25" filter="url(#blur9)">
+    <circle cx="200" cy="200" r="180" fill="#06b6d4"/>
+    <circle cx="1000" cy="700" r="180" fill="#f59e0b"/>
+  </g>
+  <rect x="80" y="80" width="1040" height="720" rx="24" fill="rgba(255,255,255,0.55)" stroke="rgba(255,255,255,0.85)"/>
+  <text x="600" y="130" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="22" fill="#0f172a">Silicon Photonics Market (USD Millions)</text>
+  <line x1="160" y1="680" x2="1060" y2="680" stroke="#334155" stroke-width="2"/>
+  <line x1="160" y1="180" x2="160" y2="680" stroke="#334155" stroke-width="2"/>
+  <g font-family="system-ui, sans-serif" font-size="13" fill="#475569" text-anchor="end">
+    <text x="150" y="685">0</text>
+    <text x="150" y="585">200</text>
+    <text x="150" y="485">400</text>
+    <text x="150" y="385">600</text>
+    <text x="150" y="285">800</text>
+    <text x="150" y="195">1000</text>
+  </g>
+  <g font-family="system-ui, sans-serif" font-size="13" fill="#475569" text-anchor="middle">
+    <text x="240" y="705">2024</text>
+    <text x="400" y="705">2025</text>
+    <text x="560" y="705">2026</text>
+    <text x="720" y="705">2027</text>
+    <text x="880" y="705">2028</text>
+    <text x="1040" y="705">2029</text>
+  </g>
+  <path d="M 240 605 L 400 560 L 560 490 L 720 400 L 880 320 L 1040 249 L 1040 680 L 240 680 Z" fill="url(#area9)"/>
+  <path d="M 240 605 L 400 560 L 560 490 L 720 400 L 880 320 L 1040 249" fill="none" stroke="#ec4899" stroke-width="4"/>
+  <g fill="#ec4899" stroke="white" stroke-width="3">
+    <circle cx="240" cy="605" r="8"/>
+    <circle cx="400" cy="560" r="8"/>
+    <circle cx="560" cy="490" r="8"/>
+    <circle cx="720" cy="400" r="8"/>
+    <circle cx="880" cy="320" r="8"/>
+    <circle cx="1040" cy="249" r="10"/>
+  </g>
+  <rect x="760" y="180" width="280" height="86" rx="14" fill="rgba(255,255,255,0.9)"/>
+  <text x="900" y="215" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="20" fill="#0f172a">45% CAGR</text>
+  <text x="900" y="240" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#475569">reaching $863M by 2029</text>
+  <text x="900" y="258" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Source: Yole Group</text>
+  <rect x="400" y="810" width="400" height="70" rx="18" fill="rgba(255,255,255,0.85)"/>
+  <text x="600" y="840" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="20" fill="#0f172a">Figure 9</text>
+  <text x="600" y="865" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#1e293b">Silicon photonics market projection</text>
+</svg>
