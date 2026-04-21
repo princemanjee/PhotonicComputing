@@ -14,7 +14,9 @@ The rest of the paper is organized as follows. Section 2 traces the history of c
 
 The step-back framing that guides the paper is this: computation is not a free abstract operation. It consumes physical resources, specifically electrons moved through wires, heat dissipated through packages, and time spent waiting for signals to arrive. When we ask why photonic computing matters, the answer is that the electron-centric version of those three resources is becoming constrained all at once, and only a change of physical carrier can relieve all three constraints together.
 
-`[FIGURE 1: Illustration of an AI data center with glowing fiber optic bundles replacing copper interconnects between GPU racks]` - placeholder for image to be generated
+![Figure 1: Illustration of an AI data center with glowing fiber optic bundles replacing copper interconnects between GPU racks](Assets/1.png)
+
+**Figure 1.** Illustration of an AI data center with glowing fiber optic bundles replacing copper interconnects between GPU racks.
 
 ## 2. A Short History of Computing Technology and the Road to Photonics
 
@@ -52,9 +54,13 @@ The telecommunications track gave photonics its bandwidth. A second, quieter res
 
 The three tracks, electronic scaling hitting a wall, silicon photonics maturing as a manufacturable platform, and frequency-encoded logic moving from theory into the laboratory, are now converging. Artificial intelligence workloads supply the demand. Silicon photonic transceivers, now capable of 400 Gbps per wavelength and 1.6 Tb/s/mm^2 on-chip density [11], supply the interconnect. Multi-dimensional photonic computing architectures have demonstrated more than 217 tera-operations per second on diffractive optics and more than 11 TOPS using combined time, wavelength, and spatial multiplexing, with energy efficiencies up to three orders of magnitude better than traditional chips [7]. The MIT Multiplicative Analog Frequency Transform Optical Neural Network (MAFT-ONN), a three-layer optical deep neural network, computes more than four million fully analog operations per inference using photoelectric multiplication between radio-frequency-encoded optical frequency combs [17]. The convergence point is the thesis of this paper: the physical carrier of computation is ready to change again, this time from the electron to the photon.
 
-`[FIGURE 2: Timeline infographic of computing evolution from ENIAC through transistor, CMOS, GPU, to photonic chips]` - placeholder for image to be generated
+![Figure 2: Timeline infographic of computing evolution from ENIAC through transistor, CMOS, GPU, to photonic chips](Assets/2.png)
 
-`[FIGURE 3: Comparative diagram showing electronic signal (electrons through copper with RC delay bottleneck) vs photonic signal (photons through silicon waveguide)]` - placeholder for image to be generated
+**Figure 2.** Timeline infographic of computing evolution from ENIAC through transistor, CMOS, GPU, to photonic chips.
+
+![Figure 3: Comparative diagram showing electronic signal (electrons through copper with RC delay bottleneck) vs photonic signal (photons through silicon waveguide)](Assets/3.png)
+
+**Figure 3.** Comparative diagram showing electronic signal (electrons through copper with RC delay bottleneck) vs photonic signal (photons through silicon waveguide).
 
 ## 3. The Physical Basis of Photonic Computing Advantages
 
@@ -74,7 +80,9 @@ Modern systems exploit this parallelism at enormous scale. Typical DWDM installa
 
 The analytical takeaway is that WDM turns the optical medium itself into a natural parallel bus. An electronic system must spend silicon area and energy to build additional physical lanes; a photonic system exploits the wavelength dimension, which is essentially free once the lasers and filters are in place.
 
-`[FIGURE 4: Cross-section diagram of silicon waveguide with multiple colored wavelengths propagating in parallel, demonstrating WDM]` - placeholder for image to be generated
+![Figure 4: Cross-section diagram of silicon waveguide with multiple colored wavelengths propagating in parallel, demonstrating WDM](Assets/4.png)
+
+**Figure 4.** Cross-section diagram of silicon waveguide with multiple colored wavelengths propagating in parallel, demonstrating WDM.
 
 ### 3.3 Multi-Level Encoding: Beyond Binary
 
@@ -84,7 +92,9 @@ The first family encodes multiple levels into the amplitude of a signal. Pulse-a
 
 Multi-level encoding multiplies the information content of every photon, directly attacking the bottleneck that binary electronics cannot escape: a silicon transistor has only two stable states, but a photon has a continuum.
 
-`[FIGURE 5: Diagram comparing binary encoding (2 states per signal) vs frequency-bin multi-level encoding (8 discrete wavelength states per signal)]` - placeholder for image to be generated
+![Figure 5: Diagram comparing binary encoding (2 states per signal) vs frequency-bin multi-level encoding (8 discrete wavelength states per signal)](Assets/5.png)
+
+**Figure 5.** Diagram comparing binary encoding (2 states per signal) vs frequency-bin multi-level encoding (8 discrete wavelength states per signal).
 
 ### 3.4 Native Parallelism in Linear Algebra
 
@@ -94,7 +104,9 @@ The mapping is direct. A mesh of Mach-Zehnder interferometers (pairs of waveguid
 
 The deeper reason is structural. A photonic tensor core performs the matrix operation as a physical linear optical transformation, not as a sequenced computation. Light enters, interferes, and exits, and the answer is available at the output detectors within a single traversal of the chip. Nothing is "clocked." The parallelism is not built from transistors; it is built from the Maxwell equations.
 
-`[FIGURE 6: Schematic of a photonic tensor core mesh showing a matrix-vector multiplication executing in a single pass of light through programmable Mach-Zehnder interferometers]` - placeholder for image to be generated
+![Figure 6: Schematic of a photonic tensor core mesh showing a matrix-vector multiplication executing in a single pass of light through programmable Mach-Zehnder interferometers](Assets/6.png)
+
+**Figure 6.** Schematic of a photonic tensor core mesh showing a matrix-vector multiplication executing in a single pass of light through programmable Mach-Zehnder interferometers.
 
 ## 4. Empirical State of Photonic Computing
 
@@ -114,7 +126,9 @@ Memory, traditionally photonic computing's hardest subsystem, has also crossed a
 
 The ecosystem around these devices is now populated by well-funded firms. Ayar Labs ships the TeraPhys optical chiplet that allows "any chipmaker [to] bolt this on and have an optical converter," Lightmatter sells the Passage photonic interconnect fabric for AI accelerators, and Xscape Photonics, a Columbia University spinout founded by Alex Gaeta, Michal Lipson, Keren Bergman, Vivek Raghunathan, and Yoshi Okawachi, has Cisco Investments backing for its multi-wavelength programmable laser platform [12], [23]. Xanadu published a programmable photonic quantum chip operating at room temperature in Nature on 8 March 2021, sidestepping the cryogenic cooling that constrains superconducting-qubit competitors [14]. MIT's MAFT-ONN is at the licensing stage through the Technology Licensing Office, signaling transition from academic invention to industrial product [17]. The commercial trajectory is not speculative; it is already funded, patented, and shipping.
 
-`[FIGURE 7: Photo-realistic rendering of a silicon photonic chip on a wafer, with colorful light traces visible]` - placeholder for image to be generated
+![Figure 7: Photo-realistic rendering of a silicon photonic chip on a wafer, with colorful light traces visible](Assets/7.png)
+
+**Figure 7.** Photo-realistic rendering of a silicon photonic chip on a wafer, with colorful light traces visible.
 
 ### 4.3 Accuracy: The Threshold Condition for Adoption
 
@@ -130,7 +144,9 @@ The economic argument for photonic computing is not driven by exotic physics; it
 
 The issue is that every copper trace moving data between GPUs in a rack, or between racks in a training cluster, dissipates energy as heat and caps out at a bandwidth-distance product set by RC delay (the resistance-capacitance time constant that limits how fast a voltage signal can transition on a wire). Doubling compute density doubles the data each GPU must exchange, yet copper bandwidth per pin scales slowly and power scales with the square of frequency. The consequence is that a growing fraction of every AI training budget is spent not computing but moving bits between chips. Photonic interconnect attacks this bottleneck directly by substituting light for copper on the longest, hottest, most power-hungry links in the stack.
 
-`[FIGURE 8: Bar chart comparing memory bandwidth, electronic interconnect bandwidth, and photonic interconnect bandwidth in TB/s, showing the gap]` - placeholder for image to be generated
+![Figure 8: Bar chart comparing memory bandwidth, electronic interconnect bandwidth, and photonic interconnect bandwidth in TB/s, showing the gap](Assets/8.png)
+
+**Figure 8.** Bar chart comparing memory bandwidth, electronic interconnect bandwidth, and photonic interconnect bandwidth in TB/s, showing the gap.
 
 ### 5.2 Bandwidth Density and Cost Per Bit
 
@@ -144,7 +160,9 @@ Market forecasting confirms the technology curve. The Yole Group projects the si
 
 Investment patterns mirror the technical readiness. Cisco Investments has backed Xscape Photonics through the Columbia spinout round [12], Marvell has anchored silicon photonic transceivers inside hyperscaler supply chains [6], Ayar Labs has licensed its TeraPhys chiplet to multiple silicon vendors [23], and Lightmatter's Passage interconnect product targets the same AI accelerator slots [23]. The common thread across these investments is that photonic interconnect serves as the near-term wedge: replace the copper first, then let compute follow as photonic matrix engines and in-memory architectures mature. That sequencing is rational. Interconnect upgrades can be dropped into existing racks incrementally, whereas full photonic compute integration requires co-designed software stacks that take years to stabilize. The result is that undergraduate readers should expect to see photonic interconnect ship into every new AI data center during the late 2020s, with photonic compute following across a longer 10 to 15 year horizon [3], [23].
 
-`[FIGURE 9: Projection chart showing silicon photonics market growth 2024-2030 with 45% CAGR to $863M]` - placeholder for image to be generated
+![Figure 9: Projection chart showing silicon photonics market growth 2024-2030 with 45% CAGR to $863M](Assets/9.png)
+
+**Figure 9.** Projection chart showing silicon photonics market growth 2024-2030 with 45% CAGR to $863M.
 
 ## 6. Engineering Challenges and Disadvantages
 
@@ -170,7 +188,9 @@ Photonic systems never reach infinite signal-to-noise ratio, and the error floor
 
 The system-level efficiency story only closes if the laser source is efficient, and current sources are not. Photonics Online reports that C, L, and O-band laser diodes (the telecom wavelength bands from 1260 to 1625 nanometers) operate at roughly 10 percent wall-plug efficiency, meaning 90 percent of the electrical power drawn from the wall is lost as heat before a single bit is transmitted [23]. Han et al.'s 0.82 V-cm modulation efficiency is genuinely excellent at the device level, and their 90 GHz electro-optic bandwidth supports 400 Gbps per wavelength and 3.2 Tbps aggregate across eight channels [11], but the end-to-end chain multiplies modulator efficiency by laser efficiency, fiber coupling loss, detector responsivity, and receiver sensitivity. Frequency-encoded schemes additionally require narrow-linewidth lasers with stable temperature control, since a temperature drift of a few Kelvin can shift a 50 GHz frequency-bin channel [24] outside its detection window. The analysis is that advertised sub-picojoule-per-bit photonic energy figures [23] should always be read alongside the laser's wall-plug efficiency; otherwise the comparison against a 70 W NVIDIA GPU [8] is not apples to apples.
 
-`[FIGURE 10: Diagram illustrating the hybrid electronic-photonic architecture with opto-electronic conversion points marked as efficiency bottlenecks]` - placeholder for image to be generated
+![Figure 10: Diagram illustrating the hybrid electronic-photonic architecture with opto-electronic conversion points marked as efficiency bottlenecks](Assets/10.png)
+
+**Figure 10.** Diagram illustrating the hybrid electronic-photonic architecture with opto-electronic conversion points marked as efficiency bottlenecks.
 
 ## 7. Negative Consequences of a Photonic Transition
 

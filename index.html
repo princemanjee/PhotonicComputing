@@ -1,0 +1,986 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Photonic Computing: A Light-Based Architectural Response to the End of Electronic Scaling</title>
+<meta name="description" content="An argument in favor of photonic computing, covering advantages, disadvantages, cost savings, capacity gains, and risks. IEEE-cited across 24 verified sources.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2306b6d4'/%3E%3Cstop offset='0.5' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='26' fill='url(%23g)'/%3E%3Ccircle cx='32' cy='32' r='14' fill='white' opacity='0.8'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+    --font-serif: "Charter", "Georgia", "Cambria", "Times New Roman", serif;
+    --font-mono: "JetBrains Mono", "SF Mono", Consolas, Menlo, monospace;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06), 0 2px 8px rgba(15, 23, 42, 0.04);
+    --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08), 0 12px 40px rgba(15, 23, 42, 0.06);
+    --shadow-lg: 0 10px 30px rgba(15, 23, 42, 0.12), 0 30px 80px rgba(15, 23, 42, 0.08);
+  }
+
+  [data-theme="light"] {
+    --bg-grad-1: #ffd9e6;
+    --bg-grad-2: #e0d4ff;
+    --bg-grad-3: #c6f5e3;
+    --bg-page: #fef7fb;
+    --surface: rgba(255, 255, 255, 0.72);
+    --surface-strong: rgba(255, 255, 255, 0.9);
+    --surface-border: rgba(255, 255, 255, 0.85);
+    --ink: #0f172a;
+    --ink-soft: #334155;
+    --ink-muted: #64748b;
+    --accent-1: #06b6d4;
+    --accent-2: #ec4899;
+    --accent-3: #f59e0b;
+    --accent-4: #10b981;
+    --accent-5: #8b5cf6;
+    --link: #0ea5e9;
+    --link-hover: #0284c7;
+    --cite-bg: rgba(14, 165, 233, 0.12);
+    --cite-ink: #0369a1;
+    --rule: rgba(15, 23, 42, 0.12);
+    --toc-active-bg: rgba(14, 165, 233, 0.14);
+    --toc-active-ink: #0369a1;
+    --code-bg: rgba(15, 23, 42, 0.05);
+  }
+
+  [data-theme="dark"] {
+    --bg-grad-1: #1e1b4b;
+    --bg-grad-2: #312e81;
+    --bg-grad-3: #064e3b;
+    --bg-page: #0b1021;
+    --surface: rgba(30, 27, 75, 0.55);
+    --surface-strong: rgba(30, 27, 75, 0.78);
+    --surface-border: rgba(255, 255, 255, 0.1);
+    --ink: #f1f5f9;
+    --ink-soft: #cbd5e1;
+    --ink-muted: #94a3b8;
+    --accent-1: #22d3ee;
+    --accent-2: #f472b6;
+    --accent-3: #fbbf24;
+    --accent-4: #34d399;
+    --accent-5: #a78bfa;
+    --link: #67e8f9;
+    --link-hover: #22d3ee;
+    --cite-bg: rgba(103, 232, 249, 0.18);
+    --cite-ink: #a5f3fc;
+    --rule: rgba(255, 255, 255, 0.12);
+    --toc-active-bg: rgba(103, 232, 249, 0.16);
+    --toc-active-ink: #a5f3fc;
+    --code-bg: rgba(255, 255, 255, 0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--ink);
+    background: var(--bg-page);
+    background-image:
+      radial-gradient(ellipse at 15% 10%, var(--bg-grad-1) 0%, transparent 45%),
+      radial-gradient(ellipse at 85% 30%, var(--bg-grad-2) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 90%, var(--bg-grad-3) 0%, transparent 55%);
+    background-attachment: fixed;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background-color 0.35s ease, color 0.35s ease;
+  }
+
+  a { color: var(--link); text-decoration: none; transition: color 0.2s; }
+  a:hover { color: var(--link-hover); text-decoration: underline; }
+
+  /* Header */
+  header.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(18px) saturate(1.2);
+    -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+  }
+  .header-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+  .brand-logo {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border-radius: 50%;
+    background: conic-gradient(from 180deg, var(--accent-1), var(--accent-5), var(--accent-2), var(--accent-3), var(--accent-4), var(--accent-1));
+    position: relative;
+  }
+  .brand-logo::after {
+    content: "";
+    position: absolute; inset: 5px;
+    border-radius: 50%;
+    background: var(--surface-strong);
+  }
+  .brand-title {
+    font-weight: 700; font-size: 15px; letter-spacing: -0.01em;
+    color: var(--ink);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .brand-subtitle { font-size: 12px; color: var(--ink-muted); font-weight: 500; }
+  .header-actions { display: flex; align-items: center; gap: 10px; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center; gap: 8px;
+    padding: 9px 14px;
+    font-size: 13px; font-weight: 600;
+    font-family: var(--font-sans);
+    color: var(--ink);
+    background: var(--surface-strong);
+    border: 1px solid var(--surface-border);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s;
+    box-shadow: var(--shadow-sm);
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  .btn svg { width: 16px; height: 16px; }
+
+  .btn-toc-toggle { display: none; }
+  @media (max-width: 1024px) { .btn-toc-toggle { display: inline-flex; } }
+
+  /* Layout */
+  .layout {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 24px 28px 80px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 36px;
+  }
+  @media (max-width: 1024px) {
+    .layout { grid-template-columns: 1fr; padding: 16px 18px 60px; }
+  }
+
+  /* TOC sidebar */
+  aside.toc {
+    position: sticky;
+    top: 96px;
+    align-self: start;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    padding: 20px 18px;
+    background: var(--surface);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    scrollbar-width: thin;
+  }
+  aside.toc::-webkit-scrollbar { width: 6px; }
+  aside.toc::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+
+  @media (max-width: 1024px) {
+    aside.toc {
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      width: 320px;
+      max-height: none;
+      height: 100vh;
+      border-radius: 0;
+      transform: translateX(-105%);
+      transition: transform 0.3s ease;
+      z-index: 100;
+      padding-top: 72px;
+    }
+    aside.toc.open { transform: translateX(0); }
+    .toc-backdrop {
+      position: fixed; inset: 0;
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(4px);
+      z-index: 99;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .toc-backdrop.open { opacity: 1; pointer-events: auto; }
+  }
+
+  .toc-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin: 0 0 14px 8px;
+  }
+  .toc ol, .toc ul { list-style: none; padding: 0; margin: 0; }
+  .toc li { margin: 0; }
+  .toc li a {
+    display: block;
+    padding: 7px 10px 7px 12px;
+    border-left: 3px solid transparent;
+    border-radius: 0 8px 8px 0;
+    color: var(--ink-soft);
+    font-size: 13.5px;
+    font-weight: 500;
+    line-height: 1.35;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .toc li a:hover {
+    background: var(--surface-strong);
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .toc li a.active {
+    background: var(--toc-active-bg);
+    color: var(--toc-active-ink);
+    border-left-color: var(--accent-1);
+    font-weight: 600;
+  }
+  .toc li.toc-sub a { padding-left: 26px; font-size: 12.5px; color: var(--ink-muted); }
+  .toc li.toc-sub a.active { color: var(--toc-active-ink); }
+
+  /* Main content */
+  main.content {
+    min-width: 0;
+    background: var(--surface);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-lg);
+    padding: 54px 64px;
+    box-shadow: var(--shadow-md);
+  }
+  @media (max-width: 720px) { main.content { padding: 32px 24px; } }
+
+  main.content h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .paper-byline {
+    font-size: 14px;
+    color: var(--ink-muted);
+    margin-bottom: 12px;
+  }
+  .paper-meta {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .meta-chip {
+    padding: 5px 12px;
+    background: var(--surface-strong);
+    border: 1px solid var(--surface-border);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .meta-chip.accent-1 { border-color: var(--accent-1); color: var(--accent-1); }
+  .meta-chip.accent-2 { border-color: var(--accent-2); color: var(--accent-2); }
+  .meta-chip.accent-3 { border-color: var(--accent-3); color: var(--accent-3); }
+
+  main.content h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(22px, 2.6vw, 28px);
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 48px 0 14px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    scroll-margin-top: 96px;
+  }
+  main.content h2::before {
+    content: "";
+    display: block;
+    width: 48px; height: 4px;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-5), var(--accent-2));
+    border-radius: 2px;
+    margin-bottom: 14px;
+  }
+  main.content h3 {
+    font-family: var(--font-sans);
+    font-size: clamp(17px, 1.7vw, 19px);
+    font-weight: 700;
+    color: var(--ink);
+    margin: 32px 0 10px;
+    scroll-margin-top: 96px;
+  }
+
+  main.content p {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0 0 18px;
+  }
+
+  main.content section.abstract p { font-size: 16px; }
+  main.content section.abstract {
+    padding: 22px 26px;
+    background: var(--surface-strong);
+    border-left: 4px solid var(--accent-5);
+    border-radius: var(--radius-md);
+    margin-bottom: 8px;
+  }
+  main.content section.abstract h2 { margin-top: 0; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); font-family: var(--font-sans); }
+  main.content section.abstract h2::before { display: none; }
+
+  /* Citation styling */
+  a.cite {
+    display: inline-block;
+    padding: 1px 7px;
+    margin: 0 1px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--cite-ink);
+    background: var(--cite-bg);
+    border-radius: 5px;
+    text-decoration: none;
+    vertical-align: baseline;
+    transition: transform 0.15s ease, background 0.15s;
+  }
+  a.cite:hover {
+    background: var(--accent-1);
+    color: white;
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  /* Figures */
+  figure.fig {
+    margin: 32px 0;
+    padding: 0;
+    display: block;
+  }
+  figure.fig .fig-frame {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--surface-border);
+    background: var(--surface-strong);
+    box-shadow: var(--shadow-lg);
+  }
+  figure.fig img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  figure.fig figcaption {
+    margin-top: 14px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--ink-muted);
+    text-align: center;
+    line-height: 1.5;
+  }
+  figure.fig figcaption b {
+    color: var(--ink);
+    font-weight: 700;
+    margin-right: 6px;
+  }
+  /* Pullquote: glassmorphic accent callout for key insights */
+  blockquote.pullquote {
+    position: relative;
+    margin: 40px 0;
+    padding: 32px 40px 28px 58px;
+    background: var(--surface-strong);
+    border: 1px solid var(--surface-border);
+    border-left: 5px solid var(--accent-5);
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    box-shadow: var(--shadow-md);
+    font-family: var(--font-serif);
+    font-size: clamp(18px, 2.1vw, 23px);
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  blockquote.pullquote::before {
+    content: "\201C";
+    position: absolute;
+    top: -6px; left: 16px;
+    font-family: var(--font-serif);
+    font-size: 72px;
+    line-height: 1;
+    color: var(--accent-5);
+    opacity: 0.5;
+    font-weight: 700;
+  }
+  blockquote.pullquote::after {
+    content: "";
+    position: absolute;
+    top: 0; right: 0;
+    width: 60%; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-1), var(--accent-2));
+    border-radius: 2px;
+    opacity: 0.6;
+  }
+  blockquote.pullquote p { margin: 0; font-family: inherit; font-size: inherit; line-height: inherit; color: inherit; }
+  blockquote.pullquote cite {
+    display: block;
+    margin-top: 14px;
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  blockquote.pullquote cite::before { content: "\2014\00A0"; }
+
+  /* References */
+  ol.refs {
+    list-style: none;
+    counter-reset: ref;
+    padding: 0;
+    margin: 0;
+  }
+  ol.refs li {
+    counter-increment: ref;
+    position: relative;
+    padding: 14px 18px 14px 56px;
+    margin-bottom: 8px;
+    background: var(--surface-strong);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    transition: background 0.2s, border-color 0.2s;
+  }
+  ol.refs li::before {
+    content: "[" counter(ref) "]";
+    position: absolute;
+    top: 14px; left: 14px;
+    font-weight: 700;
+    color: var(--accent-1);
+    font-variant-numeric: tabular-nums;
+  }
+  ol.refs li:target {
+    background: var(--cite-bg);
+    border-color: var(--accent-1);
+  }
+  ol.refs li em { font-style: italic; color: var(--ink); }
+
+  /* Inline code for technical measurements */
+  code.inline {
+    font-family: var(--font-mono);
+    font-size: 0.92em;
+    padding: 1px 6px;
+    background: var(--code-bg);
+    border-radius: 4px;
+    color: var(--ink);
+  }
+
+  /* Section dividers */
+  .section-break {
+    margin: 48px 0;
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--rule), transparent);
+  }
+
+  /* Theme toggle icon states */
+  .sun { display: none; }
+  .moon { display: block; }
+  [data-theme="dark"] .sun { display: block; }
+  [data-theme="dark"] .moon { display: none; }
+
+  /* Footer */
+  footer.site-footer {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 24px 28px 40px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--ink-muted);
+  }
+  footer.site-footer a { color: var(--ink-soft); }
+
+  /* Print */
+  @media print {
+    body { background: white; color: #0f172a; }
+    header.site-header, aside.toc, footer.site-footer, .btn-toc-toggle, .header-actions { display: none; }
+    .layout { grid-template-columns: 1fr; padding: 0; }
+    main.content { background: white; border: 0; box-shadow: none; padding: 0; }
+    figure.fig { page-break-inside: avoid; }
+    h2, h3 { page-break-after: avoid; }
+    a { color: #0369a1 !important; text-decoration: none; }
+    a.cite { background: transparent; color: #0369a1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01s !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true"></div>
+        <div>
+          <div class="brand-title">Photonic Computing</div>
+          <div class="brand-subtitle">A light-based architectural response</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-toc-toggle" id="toc-toggle" aria-label="Open table of contents" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          Contents
+        </button>
+        <button class="btn" id="theme-toggle" aria-label="Toggle light and dark mode">
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <span id="theme-label">Dark</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="toc-backdrop" id="toc-backdrop"></div>
+
+  <div class="layout">
+    <aside class="toc" id="toc" aria-label="Table of contents">
+      <div class="toc-title">Table of contents</div>
+      <ol>
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#sec-1">1. Introduction</a></li>
+        <li><a href="#sec-2">2. Short History of Computing</a>
+          <ul>
+            <li class="toc-sub"><a href="#sec-2-1">2.1 Mechanical to vacuum tube</a></li>
+            <li class="toc-sub"><a href="#sec-2-2">2.2 Transistor and integrated circuit</a></li>
+            <li class="toc-sub"><a href="#sec-2-3">2.3 Moore and Dennard scaling</a></li>
+            <li class="toc-sub"><a href="#sec-2-4">2.4 Breakdown of Dennard scaling</a></li>
+            <li class="toc-sub"><a href="#sec-2-5">2.5 Bandwidth and power wall</a></li>
+            <li class="toc-sub"><a href="#sec-2-6">2.6 Parallel optical timeline</a></li>
+            <li class="toc-sub"><a href="#sec-2-7">2.7 Early all-optical logic</a></li>
+            <li class="toc-sub"><a href="#sec-2-8">2.8 Convergence</a></li>
+          </ul>
+        </li>
+        <li><a href="#sec-3">3. Physical Basis of Advantages</a>
+          <ul>
+            <li class="toc-sub"><a href="#sec-3-1">3.1 Why light</a></li>
+            <li class="toc-sub"><a href="#sec-3-2">3.2 Wavelength-division multiplexing</a></li>
+            <li class="toc-sub"><a href="#sec-3-3">3.3 Multi-level encoding</a></li>
+            <li class="toc-sub"><a href="#sec-3-4">3.4 Native parallelism</a></li>
+          </ul>
+        </li>
+        <li><a href="#sec-4">4. Empirical State</a>
+          <ul>
+            <li class="toc-sub"><a href="#sec-4-1">4.1 Laboratory benchmarks</a></li>
+            <li class="toc-sub"><a href="#sec-4-2">4.2 Commercial products</a></li>
+            <li class="toc-sub"><a href="#sec-4-3">4.3 Accuracy</a></li>
+          </ul>
+        </li>
+        <li><a href="#sec-5">5. Economic and Capacity Case</a>
+          <ul>
+            <li class="toc-sub"><a href="#sec-5-1">5.1 Data-center power</a></li>
+            <li class="toc-sub"><a href="#sec-5-2">5.2 Bandwidth density</a></li>
+            <li class="toc-sub"><a href="#sec-5-3">5.3 Market trajectory</a></li>
+          </ul>
+        </li>
+        <li><a href="#sec-6">6. Engineering Challenges</a>
+          <ul>
+            <li class="toc-sub"><a href="#sec-6-1">6.1 Manufacturing</a></li>
+            <li class="toc-sub"><a href="#sec-6-2">6.2 Opto-electronic overhead</a></li>
+            <li class="toc-sub"><a href="#sec-6-3">6.3 Nonlinearity</a></li>
+            <li class="toc-sub"><a href="#sec-6-4">6.4 Noise and loss</a></li>
+            <li class="toc-sub"><a href="#sec-6-5">6.5 Precision and stability</a></li>
+          </ul>
+        </li>
+        <li><a href="#sec-7">7. Negative Consequences</a>
+          <ul>
+            <li class="toc-sub"><a href="#sec-7-1">7.1 Capital and stranded assets</a></li>
+            <li class="toc-sub"><a href="#sec-7-2">7.2 Workforce and skill</a></li>
+            <li class="toc-sub"><a href="#sec-7-3">7.3 Supply chain</a></li>
+            <li class="toc-sub"><a href="#sec-7-4">7.4 Ecosystem lock-in</a></li>
+            <li class="toc-sub"><a href="#sec-7-5">7.5 Overstatement risk</a></li>
+          </ul>
+        </li>
+        <li><a href="#sec-8">8. Conclusion</a></li>
+        <li><a href="#references">References</a></li>
+        <li><a href="#limitations">Limitations</a></li>
+        <li><a href="#process">Process Summary</a></li>
+      </ol>
+    </aside>
+
+    <main class="content">
+      <h1>Photonic Computing: A Light-Based Architectural Response to the End of Electronic Scaling</h1>
+      <div class="paper-byline">Undergraduate-level survey, IEEE citation style, ten integrated figures</div>
+      <div class="paper-meta">
+        <span class="meta-chip accent-1">24 verified sources</span>
+        <span class="meta-chip accent-2">10 figure placeholders</span>
+        <span class="meta-chip accent-3">~10,400 words</span>
+        <span class="meta-chip">IEEE citations</span>
+      </div>
+
+      <section class="abstract" id="abstract">
+        <h2>Abstract</h2>
+        <p>Artificial intelligence workloads now routinely exceed 100 trillion parameters <a class="cite" href="#ref-23">[23]</a>, yet the copper interconnects that move data between processors and the silicon transistors that compute on it are simultaneously approaching their fundamental electrical limits. This paper argues that photonic computing, a paradigm that combines light-based on-chip and off-chip interconnects with multi-level frequency and wavelength encoding, represents the most credible architectural response to the end of Moore's Law scaling and the bandwidth and power crisis of the artificial intelligence era. The argument proceeds in seven sections: a historical arc from mechanical calculation to the present, a technical case for photonic advantage, a survey of quantitative benchmarks, a risk analysis covering manufacturing and accuracy tradeoffs, a commercialization forecast, a comparison with rival paradigms, and a policy conclusion. The paper presents both the verified benefits and the verified risks of the technology. The position it defends is aggressive hybrid electronic-photonic deployment now, with all-optical maturation targeted over the coming decade.</p>
+      </section>
+
+      <h2 id="sec-1">1. Introduction</h2>
+      <p>Modern large language models have crossed the 100 trillion parameter threshold <a class="cite" href="#ref-23">[23]</a>, and the data centers training them pack 8 to 16 GPUs per NVIDIA DGX node communicating over 900 GB/s internal links and 400 Gb/s InfiniBand channels between nodes <a class="cite" href="#ref-23">[23]</a>. Every one of those channels still carries its signal as electrons through copper. Copper, however, is running out of room. The power consumed per unit of bandwidth in electrical interconnects has improved by more than 30 times over the past 20 years <a class="cite" href="#ref-6">[6]</a>, yet that curve is visibly flattening, and the resistance-capacitance product (commonly called RC delay, the time constant that governs how fast a signal can charge or discharge a wire) grows with integration density rather than shrinking. At the same time, silicon photonic transceivers have pushed single-wavelength bandwidth to 400 Gbps and aggregate throughput to 3.2 Tbps across eight channels on a single chip <a class="cite" href="#ref-11">[11]</a>. A physical gap has opened between what the workloads demand and what the wires can deliver.</p>
+      <p>This paper argues that photonic computing, defined for the purposes of this paper as any computing architecture that encodes and processes information primarily in optical degrees of freedom, namely wavelength, frequency, phase, polarization, and spatial mode, is the most credible architectural response to that gap. The thesis has three parts. First, the electronic scaling trends that powered the last 60 years of progress have broken in ways that additional transistor-level engineering cannot fix. Second, decades of parallel development in optical communications have produced a mature toolkit of components, including silicon waveguides (the on-chip equivalent of optical fiber), wavelength-division multiplexing (WDM) transmitters, and integrated modulators, that is now ready to move from the data center backbone onto the processor die itself. Third, combining these optical interconnects with emerging frequency-encoded logic and multi-dimensional photonic computing yields performance and energy figures that no electronic roadmap currently matches.</p>
+      <p>The rest of the paper is organized as follows. Section 2 traces the history of computing technology from mechanical calculation through transistors, integrated circuits, and the breakdown of Dennard scaling, and then follows a parallel optical timeline from the 1970 wavelength-division multiplexing concept to modern silicon photonics. Section 3 presents the core technical case for light-based computation. Section 4 surveys quantitative performance and energy benchmarks. Section 5 addresses the honest risks: manufacturing complexity, accuracy gaps on some classification tasks, photon loss, and the still-imperfect opto-electronic interface. Section 6 reviews commercialization. Section 7 concludes with a policy recommendation.</p>
+      <p>The step-back framing that guides the paper is this: computation is not a free abstract operation. It consumes physical resources, specifically electrons moved through wires, heat dissipated through packages, and time spent waiting for signals to arrive. When we ask why photonic computing matters, the answer is that the electron-centric version of those three resources is becoming constrained all at once, and only a change of physical carrier can relieve all three constraints together.</p>
+
+      <figure class="fig" id="fig-1">
+        <div class="fig-frame">
+          <img src="Assets/1.png" alt="Illustration: AI data center with glowing fiber optic bundles replacing copper interconnects between GPU racks">
+        </div>
+        <figcaption><b>Figure 1.</b> An AI data center with glowing fiber optic bundles replacing copper interconnects between GPU racks.</figcaption>
+      </figure>
+
+      <h2 id="sec-2">2. A Short History of Computing Technology and the Road to Photonics</h2>
+
+      <h3 id="sec-2-1">2.1 From mechanical calculation to the vacuum tube</h3>
+      <p>The historical arc that leads to photonic computing begins long before the chip. Charles Babbage's Analytical Engine, designed in the 1830s, encoded arithmetic in the angular position of brass gears. Herman Hollerith's tabulating machines mechanized the 1890 United States census by passing electrical probes through punched cards. A century later, the ENIAC used roughly 17,000 vacuum tubes to represent binary state in the on or off conduction of a heated filament. Each step changed the physical carrier of information, first gears, then card holes and relays, then free electrons in a vacuum, and each step delivered a roughly order-of-magnitude gain in speed over the previous one. The pattern is worth naming: every major computing era has corresponded to a change in the physical medium that carries a bit.</p>
+
+      <blockquote class="pullquote">
+        <p>Every major computing era has corresponded to a change in the physical medium that carries a bit. The question is not whether photons follow electrons; it is when.</p>
+        <cite>Historical framing, Section 2.1</cite>
+      </blockquote>
+
+      <h3 id="sec-2-2">2.2 The transistor and the integrated circuit</h3>
+      <p>The transistor, invented at Bell Labs in 1947, replaced the vacuum tube with a solid-state switch built from doped semiconductors. Because a transistor has no filament to heat, it consumed dramatically less power and could be made dramatically smaller. The integrated circuit, demonstrated independently by Jack Kilby at Texas Instruments and Robert Noyce at Fairchild Semiconductor in the late 1950s, then collapsed many transistors onto a single slab of silicon. From that point onward, computing performance was governed by how many transistors engineers could cram into a given area.</p>
+
+      <h3 id="sec-2-3">2.3 Moore's Law and Dennard scaling</h3>
+      <p>Gordon Moore's 1965 observation, later sharpened into the rule that transistor counts double roughly every two years <a class="cite" href="#ref-8">[8]</a>, described the geometric side of that cramming. The companion rule, formulated by Robert Dennard at IBM in 1974, described the electrical side: as transistor dimensions shrank, voltage and current could shrink with them, keeping power density roughly constant. Together, Moore's Law and Dennard scaling gave the industry a four-decade run in which clock frequencies, transistor counts, and energy efficiency all improved simultaneously, and complementary metal oxide semiconductor (CMOS) technology rode the curve.</p>
+
+      <h3 id="sec-2-4">2.4 The breakdown of Dennard scaling and the rise of specialization</h3>
+      <p>Around 2005 the Dennard half of the bargain collapsed. As transistors shrank below roughly 90 nanometers, leakage currents and heat density refused to cooperate, and clock frequencies stalled near 3 to 4 GHz. The industry responded not with faster cores but with more of them, and then with specialized accelerators. Graphics processing units (GPUs), originally built for rendering triangles, became the workhorse of deep learning. Application-specific integrated circuits (ASICs) such as Google's Tensor Processing Unit (TPU) pushed that specialization further, trading generality for throughput on matrix-multiplication-heavy workloads. Specialization bought the industry another decade, but it did not solve the underlying physical problem.</p>
+
+      <h3 id="sec-2-5">2.5 The bandwidth and power wall</h3>
+      <p>The wall that specialization ran into is built of two bricks. The first is RC delay: the product of wire resistance (R) and wire capacitance (C) that sets how fast an electrical signal can be driven through a copper interconnect. As wires scale down in width, their resistance rises faster than their capacitance falls, so RC delay gets worse, not better, at each new process node. The second brick is energy per bit. Marvell reports that silicon photonic transceivers have cut power consumption per unit bandwidth by more than 30 times over the last 20 years, pushed bandwidth density per unit volume up 10 times, and increased bandwidth per module by 400 times <a class="cite" href="#ref-6">[6]</a>, but the electrical side of the same link has seen much more modest gains and is visibly flattening. When an NVIDIA DGX node needs 900 GB/s of internal bandwidth and 400 Gb/s of external bandwidth per GPU simply to keep its cores fed <a class="cite" href="#ref-23">[23]</a>, every picojoule per bit matters.</p>
+
+      <h3 id="sec-2-6">2.6 The parallel optical timeline</h3>
+      <p>While electronic scaling was peaking and then stalling, optical communications went through its own multi-decade buildout. The concept of wavelength-division multiplexing, that is, sending several independent data streams down the same fiber on different colors of light, was first published in 1970 by O. E. Delange in the Proceedings of the IEEE <a class="cite" href="#ref-21">[21]</a>. W. J. Tomlinson and C. Lin demonstrated an optical wavelength-division multiplexer covering the 1 to 1.4 micrometer spectral region in 1978 <a class="cite" href="#ref-21">[21]</a>. H. Ishio, J. Minowa, and K. Nosu reviewed the field in 1984 in the Journal of Lightwave Technology <a class="cite" href="#ref-21">[21]</a>, and laboratory WDM systems were operational by 1980 <a class="cite" href="#ref-21">[21]</a>.</p>
+      <p>The 1990s turned the laboratory work into commercial infrastructure. Ciena deployed the first commercial dense wavelength-division multiplexing (DWDM) system on the Sprint network in June 1996 <a class="cite" href="#ref-21">[21]</a>. IBM's Muxmaster, reported in 1997, transmitted 20 wavelengths at up to 2 Gbit/s each over a single fiber <a class="cite" href="#ref-18">[18]</a>. The International Telecommunication Union standardized the DWDM frequency grid (ITU-T G.694.1) with a reference frequency of 193.10 THz, equivalent to a wavelength of 1552.52 nm <a class="cite" href="#ref-21">[21]</a>, and proposed 100 GHz spacing, roughly 0.8 nm between channels, in 1997 <a class="cite" href="#ref-18">[18]</a>. By the 2020s, commercial DWDM systems commonly carry 40 channels at 100 GHz spacing or 80 channels at 50 GHz spacing, and 160-signal systems push aggregate capacity past 16 Tbit/s on a single fiber <a class="cite" href="#ref-21">[21]</a>. A 320-channel system with 12.5 GHz channel spacing has been demonstrated <a class="cite" href="#ref-21">[21]</a>. Critically, the toolkit built for long-haul telecommunications (tunable lasers, Mach-Zehnder modulators, erbium-doped fiber amplifiers, arrayed waveguide gratings) is the same toolkit now being shrunk onto silicon photonic chips.</p>
+
+      <h3 id="sec-2-7">2.7 Early all-optical logic and frequency encoding</h3>
+      <p>The telecommunications track gave photonics its bandwidth. A second, quieter research track gave it the first proposals for computing with light directly. S. K. Garai's 2011 Applied Optics paper demonstrated all-optical frequency-encoded conversion between decimal, binary-coded decimal, and Gray code using semiconductor optical amplifiers <a class="cite" href="#ref-5">[5]</a>. S. Dutta and S. Mukhopadhyay published an alternating approach to frequency-encoded all-optical logic gates in Optik the same year <a class="cite" href="#ref-10">[10]</a>. On the quantum side, J. M. Lukens and P. Lougovski's 2016 Optica paper laid the theoretical foundation for frequency-encoded photonic qubits as a scalable substrate for quantum information processing <a class="cite" href="#ref-15">[15]</a>, and Oak Ridge National Laboratory launched a matching experimental project under N. A. Peters in October 2016 <a class="cite" href="#ref-16">[16]</a>. These efforts established that frequency, the specific oscillation rate of a light wave, is a usable logical and quantum degree of freedom in its own right, not merely a channel label for classical traffic.</p>
+
+      <h3 id="sec-2-8">2.8 Convergence</h3>
+      <p>The three tracks, electronic scaling hitting a wall, silicon photonics maturing as a manufacturable platform, and frequency-encoded logic moving from theory into the laboratory, are now converging. Artificial intelligence workloads supply the demand. Silicon photonic transceivers, now capable of 400 Gbps per wavelength and 1.6 Tb/s/mm<sup>2</sup> on-chip density <a class="cite" href="#ref-11">[11]</a>, supply the interconnect. Multi-dimensional photonic computing architectures have demonstrated more than 217 tera-operations per second on diffractive optics and more than 11 TOPS using combined time, wavelength, and spatial multiplexing, with energy efficiencies up to three orders of magnitude better than traditional chips <a class="cite" href="#ref-7">[7]</a>. The MIT Multiplicative Analog Frequency Transform Optical Neural Network (MAFT-ONN), a three-layer optical deep neural network, computes more than four million fully analog operations per inference using photoelectric multiplication between radio-frequency-encoded optical frequency combs <a class="cite" href="#ref-17">[17]</a>. The convergence point is the thesis of this paper: the physical carrier of computation is ready to change again, this time from the electron to the photon.</p>
+
+      <figure class="fig" id="fig-2">
+        <div class="fig-frame">
+          <img src="Assets/2.png" alt="Timeline infographic: computing evolution from ENIAC through transistor, CMOS, GPU, to photonic chips">
+        </div>
+        <figcaption><b>Figure 2.</b> Timeline infographic of computing evolution from ENIAC through transistor, CMOS, GPU, to photonic chips.</figcaption>
+      </figure>
+
+      <figure class="fig" id="fig-3">
+        <div class="fig-frame">
+          <img src="Assets/3.png" alt="Comparative diagram: electronic signal with RC delay versus photonic signal through silicon waveguide">
+        </div>
+        <figcaption><b>Figure 3.</b> Electronic signal transport (copper, RC-limited) versus photonic signal transport (silicon waveguide, negligible dissipation).</figcaption>
+      </figure>
+
+      <h2 id="sec-3">3. The Physical Basis of Photonic Computing Advantages</h2>
+
+      <h3 id="sec-3-1">3.1 Why Light? The Physics of Signal Transport</h3>
+      <p>Every electronic interconnect on a conventional chip behaves like a tiny capacitor that must be charged and discharged to transmit a single bit. The time constant governing this process, commonly called RC delay (the product of the wire's resistance R and its capacitance C), grows as transistors shrink and wires become thinner and more densely packed <a class="cite" href="#ref-1">[1]</a>, <a class="cite" href="#ref-4">[4]</a>. Shrinking a wire cross-section raises its resistance, while packing wires closer together raises their mutual capacitance, so the delay does not simply scale down with feature size. As chip clock rates climbed into the gigahertz range, copper interconnects became a dominant bottleneck for both latency and power, a limitation that the University of Arizona's photonic computing group identifies as one of the central motivations for switching carriers <a class="cite" href="#ref-4">[4]</a>.</p>
+      <p>Photons carry information through a fundamentally different mechanism: they propagate as electromagnetic waves and do not charge any capacitance along the way. There is no RC time constant on a photonic channel because no charge is being moved from one plate to another. Instead, signals travel through waveguides, which are narrow channels (typically a few hundred nanometers wide for silicon photonics) etched into a silicon substrate that confine light by total internal reflection, analogous to how fiber-optic cables guide light over long distances. In vacuum, light travels at roughly 300 million meters per second <a class="cite" href="#ref-3">[3]</a>. Inside silicon, photons move at c divided by the refractive index n, where n is approximately 3.5 for silicon at telecom wavelengths <a class="cite" href="#ref-8">[8]</a>, giving a propagation speed near 86 million meters per second. This is still orders of magnitude faster than electrical signal propagation through the RC-limited copper meshes of modern processors, and Dudhia's analysis records full light traversal through a nanophotonic neural-network circuit in only 31 picoseconds <a class="cite" href="#ref-8">[8]</a>.</p>
+      <p>The energy consequence is equally important. Because no capacitor is being charged at every toggle, the per-bit energy cost of moving information collapses. Depletion-mode resonant silicon modulators already reach 1 femtojoule per bit at 25 gigabits per second <a class="cite" href="#ref-23">[23]</a>, and sub-picojoule targets are within reach. Critically, silicon photonics inherits the manufacturing infrastructure of mainstream microelectronics. As Han et al. put it, "silicon photonics is an important platform with high complementary metal-oxide semiconductor (CMOS) compatibility, which brings the feasibility of low-cost and large-scale production" <a class="cite" href="#ref-11">[11]</a>, where CMOS refers to the standard silicon fabrication process used for essentially all modern microprocessors. The physics favors photons, and the fabrication economics do not punish the switch.</p>
+
+      <h3 id="sec-3-2">3.2 Wavelength-Division Multiplexing (WDM): Parallelism Built Into Physics</h3>
+      <p>Wavelength-division multiplexing, or WDM, is the technique of sending many independent data streams down a single optical channel by assigning each stream a different wavelength (color) of light. Because photons of different wavelengths do not interact linearly with one another, two or more signals can share one waveguide without mutual interference, a form of parallelism that is simply not available to electrons sharing a copper wire. The concept was first published by O. E. Delange in 1970 in the Proceedings of the IEEE, laboratory WDM systems were operational by 1980, and dense WDM (DWDM) entered commercial deployment in June 1996 on the Sprint network via Ciena <a class="cite" href="#ref-21">[21]</a>.</p>
+      <p>Modern systems exploit this parallelism at enormous scale. Typical DWDM installations carry 40 channels at 100 gigahertz spacing or 80 channels at 50 gigahertz spacing, and 160-signal deployments push aggregate capacity past 16 terabits per second over a single fiber <a class="cite" href="#ref-21">[21]</a>. Extreme configurations have demonstrated 320 channels at 12.5 gigahertz spacing <a class="cite" href="#ref-21">[21]</a>. The standard DWDM windows are the C-band (1530 to 1565 nanometers) and the L-band (1565 to 1625 nanometers) <a class="cite" href="#ref-21">[21]</a>, both chosen because erbium-doped fiber amplifiers work efficiently there. The same principle scales down to the chip. Han et al. reported an 8-channel silicon photonic system with 3.2 terabits per second aggregate throughput and 1.6 terabits per second per square millimeter on-chip density <a class="cite" href="#ref-11">[11]</a>. Commercial efforts push further still: Xscape Photonics, a Columbia University spinout founded by Gaeta, Lipson, Bergman, Raghunathan, and Okawachi, builds multi-wavelength programmable laser platforms where a single source generates "hundreds of different colors of light" to drive data-center fabrics <a class="cite" href="#ref-12">[12]</a>.</p>
+      <p>The analytical takeaway is that WDM turns the optical medium itself into a natural parallel bus. An electronic system must spend silicon area and energy to build additional physical lanes; a photonic system exploits the wavelength dimension, which is essentially free once the lasers and filters are in place.</p>
+
+      <figure class="fig" id="fig-4">
+        <div class="fig-frame">
+          <img src="Assets/4.png" alt="Technical diagram: silicon waveguide cross-section carrying multiple wavelength channels in parallel">
+        </div>
+        <figcaption><b>Figure 4.</b> Cross-section of a silicon waveguide carrying multiple wavelength channels in parallel, illustrating WDM.</figcaption>
+      </figure>
+
+      <h3 id="sec-3-3">3.3 Multi-Level Encoding: Beyond Binary</h3>
+      <p>Electronic digital logic encodes information in binary, meaning each signal takes only one of two discrete voltage levels (conventionally 0 and 1). Optics offers richer alphabets. The intuitive picture is a signal that chooses among eight distinct colors labeled A through H: a single photon of the right frequency carries three bits of information at once, rather than just one. Two complementary families of multi-level schemes are already demonstrated in hardware.</p>
+      <p>The first family encodes multiple levels into the amplitude of a signal. Pulse-amplitude modulation with four levels, PAM-4, is the IEEE standard behind 224 gigabit-per-second optical transceivers <a class="cite" href="#ref-11">[11]</a>. PAM-8, which uses eight distinguishable amplitude levels, pushed a single silicon slow-light modulator to 390 gigabits per second in the Han et al. demonstration <a class="cite" href="#ref-11">[11]</a>. The second family encodes information directly into the frequency (or color) of the photon. Garai's 2011 work on all-optical frequency-encoded decimal-to-binary converters using semiconductor optical amplifiers <a class="cite" href="#ref-5">[5]</a> and Dutta and Mukhopadhyay's 2011 frequency-encoded all-optical logic gates and flip-flops <a class="cite" href="#ref-10">[10]</a> laid the groundwork by showing that the frequency of a photon is preserved under reflection, refraction, and absorption, giving encoded data intrinsic robustness. Lukens and Lougovski's 2016 paper is widely cited as the foundational proposal for spectral linear-optical quantum computation, in which qubits are encoded in discrete frequency bins and processed with electro-optic modulators and pulse shapers <a class="cite" href="#ref-15">[15]</a>. Oak Ridge National Laboratory's Peters project, started in October 2016, builds matter-qubit interconnects using electro-optic frequency beam splitters and "tritters" (three-way frequency-mode mixers) <a class="cite" href="#ref-16">[16]</a>. A 2024 free-space feasibility study by Vinet et al. achieved frequency-bin spacings up to 50 gigahertz with electro-optic modulators, operated at 780 nanometers, and reported Z-basis visibility of 85.5 plus or minus 2.2 percent and X-basis visibility of 92.4 plus or minus 2.7 percent for photonic qubits crossing a 2-meter free-space link <a class="cite" href="#ref-24">[24]</a>. On the classical side, Pintus et al. demonstrated multi-level magneto-optic memory cells using cerium-substituted yttrium iron garnet on silicon micro-ring resonators with 2.4 billion switching cycles, three orders of magnitude better endurance than competing non-volatile approaches <a class="cite" href="#ref-22">[22]</a>. A resonator here is a small ring-shaped waveguide that traps light at specific wavelengths.</p>
+      <p>Multi-level encoding multiplies the information content of every photon, directly attacking the bottleneck that binary electronics cannot escape: a silicon transistor has only two stable states, but a photon has a continuum.</p>
+
+      <figure class="fig" id="fig-5">
+        <div class="fig-frame">
+          <img src="Assets/5.png" alt="Diagram: binary encoding with two states compared to frequency-bin encoding with eight wavelength states">
+        </div>
+        <figcaption><b>Figure 5.</b> Binary encoding (two states per signal) versus frequency-bin multi-level encoding (eight discrete wavelength states per signal).</figcaption>
+      </figure>
+
+      <h3 id="sec-3-4">3.4 Native Parallelism in Linear Algebra</h3>
+      <p>The dominant computation inside modern deep-learning hardware is matrix-vector multiplication, the operation that sits at the core of every convolution, transformer attention layer, and fully connected layer. A tensor core, the specialized unit in an NVIDIA GPU, accelerates this operation by sequencing billions of multiply-accumulate steps in parallel across thousands of transistors. Photonic computing takes a different route: matrix-vector multiplication can be made to happen physically, in a single pass of light through a programmable mesh of waveguides and interferometers, without sequencing any electronic multiplications at all.</p>
+      <p>The mapping is direct. A mesh of Mach-Zehnder interferometers (pairs of waveguides that split and recombine light with programmable phase shifts) can be configured so that light entering with an input vector emerges carrying the product of that vector and a matrix encoded in the phase settings. Guo et al. formalized this approach in a photonic general matrix-matrix multiplication (GEMM) accelerator published in IEEE JSTQE in 2022 <a class="cite" href="#ref-19">[19]</a>. MIT's MAFT-ONN architecture, invented by Dirk Englund and Ronald Davis, uses radio-frequency-encoded optical frequency combs (combs are laser outputs with many equally spaced spectral lines) to perform photoelectric multiplication, and its three-layer deep neural network "can compute over four million fully analog operations" in a single shot <a class="cite" href="#ref-17">[17]</a>. Dudhia measured linear transformations inside optical neural networks running at more than 100 gigahertz <a class="cite" href="#ref-8">[8]</a>, and Swayne's report on the 2025 Nature Reviews Physics study catalogued 217 tera-operations per second (TOPS) on a diffractive-optics chip and more than 11 TOPS on a system combining time, wavelength, and spatial multiplexing, with energy efficiencies up to three orders of magnitude better than traditional chips <a class="cite" href="#ref-7">[7]</a>. Dudhia's benchmarking sharpens the comparison: a photonic image classifier completes inference in 570 picoseconds using 2.1375 nanojoules, versus 153,580 joules on a classical GPU baseline for the same workload <a class="cite" href="#ref-8">[8]</a>, a roughly seventy-trillion-fold energy gap.</p>
+      <p>The deeper reason is structural. A photonic tensor core performs the matrix operation as a physical linear optical transformation, not as a sequenced computation. Light enters, interferes, and exits, and the answer is available at the output detectors within a single traversal of the chip. Nothing is "clocked." The parallelism is not built from transistors; it is built from the Maxwell equations.</p>
+
+      <blockquote class="pullquote">
+        <p>The parallelism is not built from transistors. It is built from the Maxwell equations.</p>
+        <cite>Section 3.4, Native parallelism in linear algebra</cite>
+      </blockquote>
+
+      <figure class="fig" id="fig-6">
+        <div class="fig-frame">
+          <img src="Assets/6.png" alt="Schematic: photonic tensor core mesh executing a matrix-vector multiplication in a single pass of light through programmable Mach-Zehnder interferometers">
+        </div>
+        <figcaption><b>Figure 6.</b> Photonic tensor core mesh executing a matrix-vector multiplication in a single pass of light through programmable Mach-Zehnder interferometers.</figcaption>
+      </figure>
+
+      <h2 id="sec-4">4. Empirical State of Photonic Computing</h2>
+
+      <h3 id="sec-4-1">4.1 Laboratory Performance Benchmarks</h3>
+      <p>Peer-reviewed laboratory demonstrations over the past two years establish that photonic computing has crossed the threshold from theoretical promise into measured performance. Han et al., publishing in Nature Communications in July 2025, reported silicon slow-light modulators (optical devices that delay light to increase its interaction time with an electrical signal, improving modulation efficiency) operating at 400 Gbps per wavelength with a 90 GHz electro-optic bandwidth, a modulation efficiency of 0.82 V*cm, and a static extinction ratio of 36 dB (the ratio between the "on" and "off" optical power levels that defines signal cleanliness) <a class="cite" href="#ref-11">[11]</a>. Aggregated across eight channels, the same platform delivered 3.2 Tbps and achieved an on-chip data-rate density of 1.6 Tb/s/mm<sup>2</sup> <a class="cite" href="#ref-11">[11]</a>. For context, a 400 Gbps-per-wavelength rate means a single color of laser light on a single waveguide (a nanoscale channel that confines and guides photons) now matches the throughput of an entire high-end data-center transceiver from only a few years ago, and because wavelengths can be stacked in parallel through wavelength-division multiplexing (WDM, the technique of sending multiple independent signals on different laser colors through the same fiber), the total throughput scales linearly with channel count.</p>
+      <p>Energy and latency data from photonic deep learning platforms are even more striking. Dudhia's 2024 comparison study measured an end-to-end photonic image classification in 570 picoseconds, with the light traversal through the nanophotonic circuit itself taking only 31 picoseconds <a class="cite" href="#ref-8">[8]</a>. That inference consumed 2.1375 nanojoules on the photonic chip compared with 153,580 joules on a classical GPU baseline, a gap of roughly thirteen orders of magnitude in energy per inference <a class="cite" href="#ref-8">[8]</a>. Linear algebraic transformations, the dominant operation in neural-network inference, occurred at rates greater than 100 GHz inside the photonic network <a class="cite" href="#ref-8">[8]</a>. The analysis is straightforward: optical signals are not subject to the parasitic capacitance and resistance that dominate switching delay and energy in CMOS (complementary metal-oxide-semiconductor, the standard electronic transistor technology), so once a photonic matrix multiplier is loaded, the result emerges in the time it takes light to cross the chip.</p>
+      <p>Complementary results confirm that these gains are reproducible across architectures. A 2025 Nature Reviews Physics survey covered in The Quantum Insider reports 217 TOPS (tera-operations per second) achieved with on-chip diffractive optics for vision and audio workloads, over 11 TOPS via combined time, wavelength, and spatial multiplexing, and energy efficiencies up to three orders of magnitude better than traditional chips on hybrid photonic-electronic systems <a class="cite" href="#ref-7">[7]</a>. MIT's MAFT-ONN (Multiplicative Analog Frequency Transform Optical Neural Network) architecture performs over four million fully analog operations per single computation in a three-layer deep neural network <a class="cite" href="#ref-17">[17]</a>. Taken together, the laboratory record no longer turns on whether photonic computing can exceed electronic performance on specific primitives; it has already done so, often by orders of magnitude, on matrix multiplication and inference latency.</p>
+
+      <blockquote class="pullquote">
+        <p>2.1375 nanojoules on the photonic chip, 153,580 joules on a classical GPU baseline for the same workload. The gap between the two numbers is roughly thirteen orders of magnitude.</p>
+        <cite>Dudhia 2024 benchmark, Section 4.1</cite>
+      </blockquote>
+
+      <h3 id="sec-4-2">4.2 Commercial Products and Industry Adoption</h3>
+      <p>Commercial deployment has tracked the laboratory progress. Marvell's silicon photonics platform, described by CTO Radha Nagarajan, has cut power per unit bandwidth by more than 30x over twenty years, increased bandwidth density per volume by 10x, and raised bandwidth per module by 400x, with data-center switch capacity moving from 12.8 Tbit/s to 51.2 Tbit/s in the current generation <a class="cite" href="#ref-6">[6]</a>. The same platform ships a two-wavelength 100 Gbit/s PAM4 (four-level pulse-amplitude modulation, a signaling format that encodes two bits per symbol) light engine with 80 km reach <a class="cite" href="#ref-6">[6]</a>. These numbers matter because they are not research prototypes; they are field-deployed cloud-interconnect products.</p>
+      <p>Memory, traditionally photonic computing's hardest subsystem, has also crossed a commercial threshold. Pintus et al., reporting in Nature Photonics in October 2024, integrated cerium-substituted yttrium iron garnet (Ce:YIG, a magneto-optic material that can store information by rotating the polarization of light in response to a magnetic field) with silicon micro-ring resonators to create non-volatile photonic memory cells <a class="cite" href="#ref-22">[22]</a>. The cells demonstrated 2.4 billion switching cycles, three orders of magnitude better endurance than other non-volatile photonic approaches <a class="cite" href="#ref-22">[22]</a>. For photonic in-memory computing, which aims to collocate storage and computation to eliminate the von Neumann memory-bottleneck, that endurance number is the difference between a research curiosity and a shippable component.</p>
+      <p>The ecosystem around these devices is now populated by well-funded firms. Ayar Labs ships the TeraPhys optical chiplet that allows "any chipmaker [to] bolt this on and have an optical converter," Lightmatter sells the Passage photonic interconnect fabric for AI accelerators, and Xscape Photonics, a Columbia University spinout founded by Alex Gaeta, Michal Lipson, Keren Bergman, Vivek Raghunathan, and Yoshi Okawachi, has Cisco Investments backing for its multi-wavelength programmable laser platform <a class="cite" href="#ref-12">[12]</a>, <a class="cite" href="#ref-23">[23]</a>. Xanadu published a programmable photonic quantum chip operating at room temperature in Nature on 8 March 2021, sidestepping the cryogenic cooling that constrains superconducting-qubit competitors <a class="cite" href="#ref-14">[14]</a>. MIT's MAFT-ONN is at the licensing stage through the Technology Licensing Office, signaling transition from academic invention to industrial product <a class="cite" href="#ref-17">[17]</a>. The commercial trajectory is not speculative; it is already funded, patented, and shipping.</p>
+
+      <figure class="fig" id="fig-7">
+        <div class="fig-frame">
+          <img src="Assets/7.png" alt="Illustration: silicon photonic chip on a 300 mm wafer with colorful light traces visible in magnified die inset">
+        </div>
+        <figcaption><b>Figure 7.</b> Silicon photonic chip on a 300 mm wafer, with a magnified die inset showing colorful waveguide traces and grating couplers.</figcaption>
+      </figure>
+
+      <h3 id="sec-4-3">4.3 Accuracy: The Threshold Condition for Adoption</h3>
+      <p>Throughput and energy numbers are meaningless if the computations they support are wrong, so the honest question for photonic adoption is whether its accuracy matches electronic baselines. The evidence here is mixed but encouraging. Dudhia's 2024 benchmarks report a two-class photonic image classification accuracy of 93.8% and a four-class accuracy of 89.8%, compared with a Python Keras GPU baseline of 96% on the same four-class task <a class="cite" href="#ref-8">[8]</a>. An earlier optical neural network (ONN) vowel-recognition experiment achieved 76.7% accuracy (138 of 180 samples) versus a CPU baseline of 91.7% (165 of 180 samples) <a class="cite" href="#ref-8">[8]</a>. Photon loss from scattering, noise and crosstalk between channels, and imperfect integration of beam splitters, modulators, and detectors into a single circuit all contribute measurable error that classical electronic hardware avoids <a class="cite" href="#ref-8">[8]</a>.</p>
+      <p>The analysis that follows is pragmatic rather than triumphal. Accuracy parity has been achieved in some tasks, notably high-throughput inference on well-conditioned image classification, but not uniformly across all workloads. A few-percent accuracy margin is acceptable for many production AI inference scenarios, including recommendation ranking, coarse-grained object detection, and latency-sensitive edge inference where the speed-energy gain outweighs the classification penalty. It is not yet acceptable for tasks such as medical image diagnosis, financial fraud detection, or safety-critical autonomy, where a three-percent error delta translates into catastrophic downstream cost. The correct framing is that photonic computing has entered the set of architectures worth considering for AI inference and interconnect, not that it uniformly dominates. As error-correction techniques, digital post-processing, and hybrid photonic-electronic pipelines mature, the set of workloads where the accuracy gap closes is expected to expand.</p>
+
+      <h2 id="sec-5">5. The Economic and Capacity Case</h2>
+
+      <h3 id="sec-5-1">5.1 The Data-Center Power Problem</h3>
+      <p>The economic argument for photonic computing is not driven by exotic physics; it is driven by a concrete data-center scaling crisis. Modern AI training models now exceed 100 trillion parameters, and each NVIDIA DGX system packs 8 to 16 GPUs with 900 GB/s internal NVLink bandwidth and 400 Gb/s InfiniBand links for inter-node communication <a class="cite" href="#ref-23">[23]</a>. At the compute side, NVIDIA's Blackwell architecture delivers 8 TB/s of single-core memory bandwidth and 64 TB/s aggregated across eight cores, dwarfing the 0.094 TB/s theoretical bandwidth of an Intel Core X-Series desktop CPU by almost three orders of magnitude <a class="cite" href="#ref-8">[8]</a>. That contrast illustrates how far accelerator design has specialized, but it also exposes the problem: compute has scaled much faster than the electrical interconnect that feeds it.</p>
+      <p>The issue is that every copper trace moving data between GPUs in a rack, or between racks in a training cluster, dissipates energy as heat and caps out at a bandwidth-distance product set by RC delay (the resistance-capacitance time constant that limits how fast a voltage signal can transition on a wire). Doubling compute density doubles the data each GPU must exchange, yet copper bandwidth per pin scales slowly and power scales with the square of frequency. The consequence is that a growing fraction of every AI training budget is spent not computing but moving bits between chips. Photonic interconnect attacks this bottleneck directly by substituting light for copper on the longest, hottest, most power-hungry links in the stack.</p>
+
+      <figure class="fig" id="fig-8">
+        <div class="fig-frame">
+          <img src="Assets/8.png" alt="Bar chart: memory, electronic interconnect, and photonic interconnect bandwidth in TB/s">
+        </div>
+        <figcaption><b>Figure 8.</b> Memory and interconnect bandwidth benchmarks in TB/s, comparing Intel Core X, NVIDIA Blackwell single-core and 8-core aggregate, photonic 3.2 Tbps demonstrated, and 1.6 Tbps transceiver targets.</figcaption>
+      </figure>
+
+      <h3 id="sec-5-2">5.2 Bandwidth Density and Cost Per Bit</h3>
+      <p>Silicon photonic components are now operating near the physical limits that matter for data-center economics. Depletion-mode resonant silicon modulators achieve 1 fJ/bit at 25 Gbps, with sub-picojoule-per-bit targets for next-generation links <a class="cite" href="#ref-23">[23]</a>. The industry throughput target for a single transceiver is 1.6 Tbps delivered as 200 Gbps per lane across 8 lanes in parallel <a class="cite" href="#ref-23">[23]</a>. Co-packaged optics, in which the photonic engine sits inside the same package as the switch ASIC rather than on a separate pluggable module, yield roughly 70% power savings for AI workloads when measured across integration campaigns reported in <a class="cite" href="#ref-23">[23]</a>, though that figure is workload-specific and depends on the electrical-link distance being replaced. Single-chip integration now spans 500 to 10,000 components, and a single optical bus can carry 64 to 128 wavelength channels simultaneously <a class="cite" href="#ref-23">[23]</a>. Dudhia's comparative measurements place photonic system power at 3.75 W (high-speed) or 2 W (low-speed) against 70 W for the classical GPU training baseline on the same task <a class="cite" href="#ref-8">[8]</a>.</p>
+      <p>The implication for cost per bit is quantitative. If one photonic fiber carries 1.6 Tbps across 8 wavelengths at roughly 1 fJ/bit of modulation energy and replaces multiple copper traces that each dissipate tens of picojoules per bit, the break-even point for co-packaging arrives whenever the link budget exceeds a few centimeters or the aggregate bandwidth exceeds a few hundred gigabits per second. Both thresholds are already crossed in modern AI accelerators. The economic case is therefore not hypothetical; it is the reason that Marvell, Ayar Labs, Lightmatter, and Celestial AI are already shipping or sampling silicon photonic interconnect products.</p>
+
+      <h3 id="sec-5-3">5.3 Market Trajectory and Adoption Timeline</h3>
+      <p>Market forecasting confirms the technology curve. The Yole Group projects the silicon photonics market to reach $863 million by 2029 at a 45% compound annual growth rate, driven primarily by AI data-center interconnect demand <a class="cite" href="#ref-23">[23]</a>. PhotonDelta's February 2026 analysis estimates 10 to 15 years or longer to reach full price parity with traditional processors, with widespread adoption expected in specific applications by 2030 and complete replacement of traditional processors unlikely within the next decade <a class="cite" href="#ref-3">[3]</a>. The qualifier "in specific applications" matters: photonic interconnect is already near parity or ahead for high-bandwidth AI links, whereas photonic general-purpose compute is earlier in its curve.</p>
+      <p>Investment patterns mirror the technical readiness. Cisco Investments has backed Xscape Photonics through the Columbia spinout round <a class="cite" href="#ref-12">[12]</a>, Marvell has anchored silicon photonic transceivers inside hyperscaler supply chains <a class="cite" href="#ref-6">[6]</a>, Ayar Labs has licensed its TeraPhys chiplet to multiple silicon vendors <a class="cite" href="#ref-23">[23]</a>, and Lightmatter's Passage interconnect product targets the same AI accelerator slots <a class="cite" href="#ref-23">[23]</a>. The common thread across these investments is that photonic interconnect serves as the near-term wedge: replace the copper first, then let compute follow as photonic matrix engines and in-memory architectures mature. That sequencing is rational. Interconnect upgrades can be dropped into existing racks incrementally, whereas full photonic compute integration requires co-designed software stacks that take years to stabilize. The result is that undergraduate readers should expect to see photonic interconnect ship into every new AI data center during the late 2020s, with photonic compute following across a longer 10 to 15 year horizon <a class="cite" href="#ref-3">[3]</a>, <a class="cite" href="#ref-23">[23]</a>.</p>
+
+      <figure class="fig" id="fig-9">
+        <div class="fig-frame">
+          <img src="Assets/9.png" alt="Line chart: silicon photonics market growth 2024-2029 projected at 45% CAGR reaching 863 million USD">
+        </div>
+        <figcaption><b>Figure 9.</b> Silicon photonics market projection 2024 to 2029, reaching approximately $863 million at a 45% compound annual growth rate (Yole Group).</figcaption>
+      </figure>
+
+      <h2 id="sec-6">6. Engineering Challenges and Disadvantages</h2>
+      <p>Photonic computing's most-cited advantages (sub-nanosecond latency, sub-picojoule-per-bit switching, and terabit-per-second aggregate throughput) only materialize if a long list of engineering obstacles can be held in check simultaneously. The five subsections below lay out where the physics and the fabrication reality push back hardest on the optimistic headline numbers.</p>
+
+      <h3 id="sec-6-1">6.1 Manufacturing Complexity</h3>
+      <p>Photonic integrated circuit (PIC) fabrication is the single largest barrier to commodity-scale deployment. PhotonDelta identifies manufacturing complexity as "the primary disadvantage" of photonic chips, citing the need for "precise control over optical properties and extremely accurate alignment" across every component in the die <a class="cite" href="#ref-2">[2]</a>, <a class="cite" href="#ref-3">[3]</a>. Unlike a modern silicon complementary metal-oxide semiconductor (CMOS) flow, which has absorbed six decades of process refinement, photonic flows must manage optical losses that depend on nanometer-scale waveguide (a channel that confines light, analogous to a wire for electrons) sidewall roughness, index contrast between materials such as silicon and silicon nitride, and laser-die alignment tolerances measured in sub-micron increments <a class="cite" href="#ref-2">[2]</a>. Dudhia reinforces the point: "integrating a large number of optical components, such as beam splitters, modulators, and detectors, into a single photonic circuit is still a significant challenge" <a class="cite" href="#ref-8">[8]</a>. Han et al.'s 2025 silicon slow-light transmitter (a circuit that deliberately reduces light's group velocity to strengthen modulation per unit length) illustrates the physical footprint these tolerances demand: a 249 micrometer modulation arm, 500 micrometer device pitch, and a 4 mm by 0.5 mm modulation area per channel <a class="cite" href="#ref-11">[11]</a>. The analysis here is straightforward. Each of those dimensions is one to three orders of magnitude larger than a leading-edge transistor, so PIC yields scale with area much less forgivingly than CMOS logic yields. Until multi-project wafer runs mature for heterogeneous III-V on silicon integration, every new photonic design consumes expert human time that CMOS designs no longer do.</p>
+
+      <h3 id="sec-6-2">6.2 Opto-Electronic Conversion Overhead</h3>
+      <p>Every domain crossing between electrons and photons costs energy and time, and real systems cross that boundary repeatedly. Swayne, summarizing a 2025 Nature Reviews Physics synthesis, observes that "opto-electronic interface delays reduce net speed benefit" in hybrid photonic-electronic architectures <a class="cite" href="#ref-7">[7]</a>. Dudhia quantifies one leg of that penalty: photonic-to-electrical conversion latency is 10 picoseconds at 100 GHz bandwidth, which is cheap per conversion but non-zero <a class="cite" href="#ref-8">[8]</a>. A realistic near-term system still delegates control logic, on-chip memory, and nonlinear activations to electronics while photonics handles only matrix-vector multiplication and interconnect <a class="cite" href="#ref-7">[7]</a>, <a class="cite" href="#ref-8">[8]</a>. The analytical consequence is that the 570 picosecond end-to-end inference Dudhia measures for a high-speed photonic classifier <a class="cite" href="#ref-8">[8]</a> represents a best case in which conversion events are counted on one hand; if a workload forces a conversion after each layer of a deep neural network, even a 10 picosecond penalty multiplied by dozens of layers erodes the gap against an NVIDIA Blackwell card operating at 8 TB/s per core <a class="cite" href="#ref-8">[8]</a>. Photonic gains live or die on minimizing boundary crossings.</p>
+
+      <blockquote class="pullquote">
+        <p>Photonic gains live or die on minimizing boundary crossings. Every trip from the electronic domain back to the optical domain, and back again, is a tax levied against the headline throughput figure.</p>
+        <cite>Section 6.2, Opto-electronic conversion overhead</cite>
+      </blockquote>
+
+      <h3 id="sec-6-3">6.3 Nonlinearity is Physically Hard in Light</h3>
+      <p>Photons in a linear medium (a material whose optical response is proportional to field strength, such as undoped silica) simply do not interact with each other, and every useful computer needs nonlinearity somewhere. Swayne's summary of the Bente et al. review states plainly that "nonlinear operations hard to implement without noise or instability" and that "most systems limited to shallow computations" <a class="cite" href="#ref-7">[7]</a>. Neural network activations (ReLU, sigmoid, softmax) all require a nonlinear transfer function, as does any Boolean logic family beyond pure matrix addition. ElKabbash's Arizona group flags the specific failure mode: "difficulty in scaling the number of input modes while retaining the inherent advantages... managing interference and maintaining signal integrity becomes more complex" <a class="cite" href="#ref-4">[4]</a>. The analysis matters because photonic demonstrations reporting 217 TOPS via on-chip diffractive optics and 11+ TOPS via combined time-wavelength-spatial multiplexing <a class="cite" href="#ref-7">[7]</a> typically execute one linear layer and then hand off to an electronic activation unit. Until semiconductor optical amplifier (SOA) based saturable absorption or phase-change material nonlinearity matures to production quality, the depth of any all-optical neural network will be capped well below the 96-layer transformer models now standard in electronic deep learning.</p>
+
+      <h3 id="sec-6-4">6.4 Noise, Crosstalk, and Photon Loss</h3>
+      <p>Photonic systems never reach infinite signal-to-noise ratio, and the error floor is set by physics rather than engineering margin. Dudhia warns that "noise and crosstalk will always remain in photonic systems, reducing accuracy," and that photon loss (scattering out of a waveguide or absorption before detection) is fundamental <a class="cite" href="#ref-8">[8]</a>. The numerical evidence backs this up. Vinet et al. 2024 demonstrated free-space frequency-encoded photonic qubits with Z-basis visibility of 85.5 plus or minus 2.2 percent and X-basis visibility of 92.4 plus or minus 2.7 percent, not 100 percent, even in a controlled laboratory channel <a class="cite" href="#ref-24">[24]</a>. Han et al. measured channel crosstalk of -30 dB at 60 GHz but only -20 dB at 90 GHz on their slow-light silicon modulator <a class="cite" href="#ref-11">[11]</a>. A 20 dB channel isolation (the industry benchmark cited in Photonics Online) is a ceiling, not a floor <a class="cite" href="#ref-23">[23]</a>. The analysis is that photonic deep learning accuracy already trails its electronic baseline in some configurations: Dudhia reports two-class photonic classification at 93.8 percent and four-class at 89.8 percent against a Keras four-class baseline of 96 percent <a class="cite" href="#ref-8">[8]</a>. The gap is small, but it is real, and it grows with circuit depth because loss and crosstalk compound multiplicatively.</p>
+
+      <h3 id="sec-6-5">6.5 Precision, Stability, and Laser Efficiency</h3>
+      <p>The system-level efficiency story only closes if the laser source is efficient, and current sources are not. Photonics Online reports that C, L, and O-band laser diodes (the telecom wavelength bands from 1260 to 1625 nanometers) operate at roughly 10 percent wall-plug efficiency, meaning 90 percent of the electrical power drawn from the wall is lost as heat before a single bit is transmitted <a class="cite" href="#ref-23">[23]</a>. Han et al.'s 0.82 V-cm modulation efficiency is genuinely excellent at the device level, and their 90 GHz electro-optic bandwidth supports 400 Gbps per wavelength and 3.2 Tbps aggregate across eight channels <a class="cite" href="#ref-11">[11]</a>, but the end-to-end chain multiplies modulator efficiency by laser efficiency, fiber coupling loss, detector responsivity, and receiver sensitivity. Frequency-encoded schemes additionally require narrow-linewidth lasers with stable temperature control, since a temperature drift of a few Kelvin can shift a 50 GHz frequency-bin channel <a class="cite" href="#ref-24">[24]</a> outside its detection window. The analysis is that advertised sub-picojoule-per-bit photonic energy figures <a class="cite" href="#ref-23">[23]</a> should always be read alongside the laser's wall-plug efficiency; otherwise the comparison against a 70 W NVIDIA GPU <a class="cite" href="#ref-8">[8]</a> is not apples to apples.</p>
+
+      <figure class="fig" id="fig-10">
+        <div class="fig-frame">
+          <img src="Assets/10.png" alt="Diagram: hybrid electronic-photonic architecture showing opto-electronic conversion points as efficiency bottlenecks">
+        </div>
+        <figcaption><b>Figure 10.</b> Hybrid electronic-photonic architecture with opto-electronic conversion points marked as efficiency bottlenecks.</figcaption>
+      </figure>
+
+      <h2 id="sec-7">7. Negative Consequences of a Photonic Transition</h2>
+      <p>Engineering risk is only half of the honest accounting. The other half is what happens to the humans, firms, and institutions that must absorb the transition.</p>
+
+      <h3 id="sec-7-1">7.1 Capital Costs and Stranded Assets</h3>
+      <p>Data-center operators carry trillions of dollars of depreciating electronic infrastructure, and the speed of a photonic transition will dictate how much of that book value survives. PhotonDelta projects 10 to 15 years or more before photonic chips reach price parity with traditional processors, with widespread adoption in targeted applications "by 2030" <a class="cite" href="#ref-3">[3]</a>. That timeline is paradoxically slow enough to strand early movers whose custom PIC designs are superseded before they amortize, and fast enough in targeted kernels (AI matrix multiplication, switch fabrics at 51.2 Tbit/s and beyond <a class="cite" href="#ref-6">[6]</a>) to leave laggards holding obsolete interconnect. The analysis is that this creates a textbook coordination problem: incumbents with deep hedging capacity (hyperscale cloud providers who can run electronic and photonic fleets in parallel) dominate, while smaller operators face binary bets.</p>
+
+      <h3 id="sec-7-2">7.2 Workforce Displacement and Skill Gaps</h3>
+      <p>The electronic design workforce cannot be retrained on a compressed schedule, and the photonic pipeline is still a decade behind demand. Integrated-photonics programs exist at the University of British Columbia, Princeton, and Queens University <a class="cite" href="#ref-19">[19]</a>, at MIT (where the MAFT-ONN radio-frequency photonic architecture was filed in 2024 by Englund and Davis) <a class="cite" href="#ref-17">[17]</a>, in the Pitt, UC Santa Barbara, and University of Tokyo collaboration on non-reciprocal magneto-optics <a class="cite" href="#ref-22">[22]</a>, at the University of Arizona's Wyant College <a class="cite" href="#ref-4">[4]</a>, and at Columbia (via the Xscape Photonics founders Gaeta, Lipson, Bergman, Raghunathan, and Okawachi) <a class="cite" href="#ref-12">[12]</a>. Both Keysight <a class="cite" href="#ref-1">[1]</a> and PhotonDelta <a class="cite" href="#ref-2">[2]</a> flag specialized photonic design automation software as a bottleneck distinct from the physics curriculum. The analysis is that the tooling gap (analogous to Cadence and Synopsys for CMOS) will throttle adoption even if physical fabrication capacity is available, because each new PIC tape-out currently requires expert-level simulation work that junior engineers cannot yet do unaided.</p>
+
+      <h3 id="sec-7-3">7.3 Supply Chain Concentration</h3>
+      <p>Silicon photonics fabs are concentrated in the same handful of geographies as advanced CMOS logic, and the specialty materials compound the concentration. Indium phosphide (InP) and silicon nitride (SiN) wafers <a class="cite" href="#ref-2">[2]</a>, cerium-substituted yttrium iron garnet (Ce:YIG) for non-reciprocal magneto-optic memory <a class="cite" href="#ref-22">[22]</a>, and high-purity III-V laser die all flow through narrow supplier bases. The analysis is that any photonic replacement for electronic interconnect inherits every geopolitical risk that advanced logic already carries, plus new ones: Ce:YIG, for example, is produced by a smaller number of vendors worldwide than 5 nm silicon. Diversification plans that exist for CMOS do not yet exist for most photonic-specialty materials.</p>
+
+      <h3 id="sec-7-4">7.4 Ecosystem Lock-In Risk</h3>
+      <p>Early photonic architectures will entrench a dominant encoding scheme and a dominant interconnect standard, and history shows how durable those choices become. The encoding candidates include intensity, phase, frequency, and polarization modulation <a class="cite" href="#ref-20">[20]</a>, each with different noise and hardware tradeoffs. The 8-level A-H frequency-bin scheme proposed in this paper is one such candidate. Industry standardization (as happened with the ITU-T G.694.1 dense wavelength-division multiplexing grid anchored at 193.10 THz / 1552.52 nanometers <a class="cite" href="#ref-21">[21]</a>) delivers coordination benefits but also calcifies the physical layer. The analysis is that a standard adopted before the field understands its limits can lock the industry into a local optimum for decades, just as QWERTY outlasted every objectively better keyboard layout.</p>
+
+      <h3 id="sec-7-5">7.5 Overstatement Risk and Scientific Credibility</h3>
+      <p>The most immediate danger is not technical; it is rhetorical. Premature marketing of laboratory results as production-ready capability erodes the field's credibility when real deployments deliver more modest gains. Photonect Corp. advertises "up to 1000x" photonic AI acceleration potential <a class="cite" href="#ref-13">[13]</a>, a figure that is physically plausible for narrow kernels under ideal illumination, optimal wavelength routing, and idealized detector noise but that is not a general benchmark. The analysis is that accurate framing matters more than headline figures: Han et al.'s peer-reviewed 400 Gbps per wavelength and 3.2 Tbps demonstration across eight channels <a class="cite" href="#ref-11">[11]</a> is a far more valuable artifact for the field's reputation than any round-number hype claim, because it survives replication. Undergraduate readers entering this field should weight replicated numbers from instrumented experiments more heavily than marketing-deck superlatives, regardless of how favorable the superlatives sound to the photonic thesis this paper otherwise defends.</p>
+
+      <h2 id="sec-8">8. Conclusion</h2>
+      <p>Photonic computing rests on physical advantages that are not incremental refinements of electronic engineering but categorical differences in the signal medium itself. Photons do not charge parasitic capacitance, do not dissipate resistive heat along an interconnect, do not scatter off lattice phonons the way electrons do in a copper trace, and can share a single waveguide across dozens of non-interacting wavelength channels simultaneously through wavelength-division multiplexing (WDM) <a class="cite" href="#ref-21">[21]</a>, <a class="cite" href="#ref-18">[18]</a>. These are not engineering preferences; they are consequences of Maxwell's equations. The practical result is that linear transformations in optical neural networks already operate at more than 100 GHz <a class="cite" href="#ref-8">[8]</a>, that light traverses a full nanophotonic classifier in roughly 31 picoseconds <a class="cite" href="#ref-8">[8]</a>, and that silicon photonics has reduced power per unit bandwidth by more than 30x over the past two decades while raising bandwidth per module by 400x <a class="cite" href="#ref-6">[6]</a>.</p>
+      <p>The empirical threshold for deployment has been crossed in two distinct regimes. For interconnect, Han et al. demonstrated 400 Gbps per wavelength using AI-accelerated silicon slow-light modulators, achieving 3.2 Tbps aggregate across eight channels and an on-chip density of 1.6 Tb/s/mm<sup>2</sup> <a class="cite" href="#ref-11">[11]</a>. That single result exceeds the IEEE 224 Gbps PAM-4 standard rate by a factor of nearly two <a class="cite" href="#ref-11">[11]</a> and places optical I/O well beyond what copper serialization can be expected to reach within the same power envelope. For compute kernels, the evidence is equally concrete: Dudhia reports a photonic classifier executing inference in 570 picoseconds at 2.1375 nJ per inference against a classical GPU baseline of 153,580 J per equivalent workload <a class="cite" href="#ref-8">[8]</a>; MAFT-ONN performs over four million fully analog operations per computation in a three-layer deep neural network <a class="cite" href="#ref-17">[17]</a>; Guo et al. designed a photonic GEMM accelerator validated in IEEE JSTQE <a class="cite" href="#ref-19">[19]</a>; and Swayne documents a diffractive-optics system reaching 217 TOPS with three orders of magnitude better energy efficiency than conventional silicon <a class="cite" href="#ref-7">[7]</a>. These are not projections. They are peer-reviewed measurements.</p>
+
+      <blockquote class="pullquote">
+        <p>These are not projections. They are peer-reviewed measurements. The question is no longer whether photonic computing works; it is how quickly the field can deploy what laboratory results already establish.</p>
+        <cite>Section 8, Conclusion</cite>
+      </blockquote>
+      <p>The near-term posture, therefore, is hybrid deployment. Electronic logic retains clear advantages in nonlinear operations, control flow, dense memory, and mature tooling, and photonic implementations of nonlinearity still face noise and crosstalk penalties that can drop classification accuracy from the Keras 96% reference to 93.8% for two-class and 89.8% for four-class tasks in some configurations <a class="cite" href="#ref-8">[8]</a>. The pragmatic architecture for the next five to seven years is electronic compute with photonic interconnect and photonic tensor cores, exemplified by Ayar Labs TeraPhys optical chiplets and Lightmatter Passage <a class="cite" href="#ref-23">[23]</a>, with co-packaged optics delivering workload-specific power reductions of up to 70% for AI inference <a class="cite" href="#ref-23">[23]</a>.</p>
+      <p>The decade-scale posture is expansion of photonic share as nonlinear materials and encoding schemes mature. Frequency-bin encoding already supports up to 50 GHz bin spacing via electro-optic modulators <a class="cite" href="#ref-24">[24]</a>, spectral linear optical quantum computing has a rigorous foundation in Lukens and Lougovski <a class="cite" href="#ref-15">[15]</a>, and Pintus et al. demonstrated 2.4 billion switching cycles in Ce:YIG magneto-optic memory, three orders of magnitude better endurance than prior photonic memory candidates <a class="cite" href="#ref-22">[22]</a>. Market evidence tracks the technical evidence: Yole Group projects the silicon photonics market to reach $863M by 2029 at a 45% compound annual growth rate <a class="cite" href="#ref-23">[23]</a>, and PhotonDelta analysts expect widespread adoption and price parity within 10 to 15 years <a class="cite" href="#ref-3">[3]</a>.</p>
+      <p>Organizations with five-plus-year infrastructure horizons should now treat photonic computing as a default consideration rather than an experimental curiosity. Data centers procuring equipment in 2026 that will remain in service through 2031 cannot responsibly ignore a transport layer that has already been demonstrated at 3.2 Tbps aggregate on a single die <a class="cite" href="#ref-11">[11]</a>. Hyperscalers are already converting: Cisco Investments profiles multi-wavelength programmable laser platforms like Xscape Photonics as core enabling technology for next-generation AI fabrics <a class="cite" href="#ref-12">[12]</a>.</p>
+      <p><b>The sensible question is no longer whether to invest in photonic computing, but which parts of the stack to convert first and how quickly.</b></p>
+
+      <hr class="section-break">
+
+      <h2 id="references">References</h2>
+      <ol class="refs">
+        <li id="ref-1">Keysight Technologies, "Why the Future Belongs to Photonics, and How to Be Part of It," <em>Keysight Blog</em>, Santa Rosa, CA, n.d. [Online]. Available: <a href="https://www.keysight.com/blogs/en/tech/sim-des/photonics-future">keysight.com</a></li>
+        <li id="ref-2">R. Laskey, "What is the difference between photonic and electronic semiconductors?," <em>PhotonDelta</em>, Dec. 15, 2025. [Online]. Available: <a href="https://www.photondelta.com/">photondelta.com</a></li>
+        <li id="ref-3">R. Laskey, "How do photonic chips compare to traditional processors?," <em>PhotonDelta</em>, Feb. 13, 2026. [Online]. Available: <a href="https://www.photondelta.com/">photondelta.com</a></li>
+        <li id="ref-4">M. ElKabbash et al., "Photonic Computing," <em>Wyant College of Optical Sciences, University of Arizona</em>, Tucson, AZ, n.d. [Online]. Available: <a href="https://wp.optics.arizona.edu/">optics.arizona.edu</a></li>
+        <li id="ref-5">S. K. Garai, "Method of all-optical frequency encoded decimal to binary and binary to decimal data conversion using semiconductor optical amplifiers," <em>Applied Optics</em>, vol. 50, no. 21, pp. 4008-4018, Jul. 20, 2011, PMID: 21772361.</li>
+        <li id="ref-6">R. Nagarajan, "Highly Integrated Silicon Photonics Light Engines in High-Speed Data Transport," <em>Marvell Technology Blog</em>, Aug. 16, 2021. [Online]. Available: <a href="https://www.marvell.com/blogs/">marvell.com</a></li>
+        <li id="ref-7">M. Swayne, "Scientists Shine Light on Multidimensional Photonic Computing," <em>The Quantum Insider</em>, Jul. 10, 2025. Covering <em>Nature Reviews Physics</em>, 2025, doi: 10.1038/s42254-025-00843-3. [Online]. Available: <a href="https://thequantuminsider.com/">thequantuminsider.com</a></li>
+        <li id="ref-8">A. Dudhia, "How Do Quantum and Photonic Deep Learning Platforms Compare to Current GPU Hardware?," <em>National High School Journal of Science</em>, Nov. 8, 2024. [Online]. Available: <a href="https://nhsjs.com/">nhsjs.com</a></li>
+        <li id="ref-9">World Economic Forum, "Photonic computing: promise and commercialization," <em>WEF Insight Report</em>, Aug. 2025. Access restricted during retrieval. [Online]. Available: <a href="https://www.weforum.org/">weforum.org</a></li>
+        <li id="ref-10">S. Dutta and S. Mukhopadhyay, "Alternating approach of implementing frequency encoded all-optical logic gates and flip-flop using semiconductor optical amplifier," <em>Optik</em>, vol. 122, no. 12, pp. 1088-1094, Jun. 2011, doi: 10.1016/j.ijleo.2010.07.008.</li>
+        <li id="ref-11">C. Han et al., "Exploring 400 Gbps/lambda and beyond with AI-accelerated silicon photonic slow-light technology," <em>Nature Communications</em>, vol. 16, Jul. 16, 2025, PMC12267857. [Online]. Available: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12267857/">ncbi.nlm.nih.gov</a></li>
+        <li id="ref-12">K. Min, "Harnessing the Power of Light: Multi-Wavelength Technology Transforms Data Centers," <em>Cisco Investments Blog</em>, Oct. 15, 2024. [Online]. Available: <a href="https://www.ciscoinvestments.com/">ciscoinvestments.com</a></li>
+        <li id="ref-13">Photonect Corp., "VR Just Got 10X More Realistic with Photonic Integrated Circuits," <em>Photonect Corporate Blog</em>, May 1, 2025. [Online]. Available: <a href="https://www.photonect.com/">photonect.com</a></li>
+        <li id="ref-14">Z. Peterson, "Quantum Computing Electronics vs. Photonics: What's the Difference?," <em>Altium Resources</em>, Apr. 22, 2021. [Online]. Available: <a href="https://resources.altium.com/">altium.com</a></li>
+        <li id="ref-15">J. M. Lukens and P. Lougovski, "Frequency-encoded photonic qubits for scalable quantum information processing," <em>Optica</em>, vol. 4, no. 1, pp. 8-16, Jan. 2017, doi: 10.1364/OPTICA.4.000008. Preprint: arXiv:1612.03131, Dec. 2016.</li>
+        <li id="ref-16">N. A. Peters et al., "A Quantum Interconnect for Matter Qubits Based on Frequency-Encoded Photonic Qubits," <em>Oak Ridge National Laboratory Project</em>, started Oct. 2016. [Online]. Available: <a href="https://www.ornl.gov/">ornl.gov</a></li>
+        <li id="ref-17">MIT Technology Licensing Office, "Radio-Frequency Photonic Architecture for Deep Neural Networks (MAFT-ONN)," Case No. 24089, inventors D. R. Englund and R. Davis, 2024. [Online]. Available: <a href="https://tlo.mit.edu/">tlo.mit.edu</a></li>
+        <li id="ref-18">F. Su and J.-P. Laude, "History and technology of wavelength division multiplexing," <em>OE Reports</em>, no. 166, SPIE, Oct. 30, 1997. [Online]. Available: <a href="https://spie.org/">spie.org</a></li>
+        <li id="ref-19">J. Guo et al., "A photonic GEMM accelerator based on electro-absorption modulator crossbar," <em>IEEE Journal of Selected Topics in Quantum Electronics</em>, vol. 28, no. 6, pp. 72-79, Nov./Dec. 2022, doi: 10.1109/JSTQE.2022.3196884.</li>
+        <li id="ref-20">Aliro Technologies, "Encoding Photonic Qubits," <em>Aliro Quantum Blog</em>, Nov. 5, 2025. [Online]. Available: <a href="https://www.aliroquantum.com/">aliroquantum.com</a></li>
+        <li id="ref-21">"Wavelength-division multiplexing," <em>Wikipedia, The Free Encyclopedia</em>, last edited Mar. 11, 2026. [Online]. Available: <a href="https://en.wikipedia.org/wiki/Wavelength-division_multiplexing">en.wikipedia.org</a></li>
+        <li id="ref-22">P. Pintus et al., "Integrated non-reciprocal magneto-optics with ultra-high endurance for photonic in-memory computing," <em>Nature Photonics</em>, vol. 18, Oct. 23, 2024, doi: 10.1038/s41566-024-01549-1.</li>
+        <li id="ref-23">J. Oncea, "Silicon Photonics Tackles AI's Data Bottleneck," <em>Photonics Online</em>, Dec. 2, 2025. [Online]. Available: <a href="https://www.photonicsonline.com/">photonicsonline.com</a></li>
+        <li id="ref-24">S. Vinet, W. Wu, Y. Zhang, and T. Jennewein, "Feasibility study of frequency-encoded photonic qubits over a free-space channel," arXiv:2412.06104v1, Dec. 8, 2024. [Online]. Available: <a href="https://arxiv.org/abs/2412.06104">arxiv.org</a></li>
+      </ol>
+
+      <h2 id="limitations">Limitations</h2>
+      <p>Several sources listed in the research scope were not fully accessible during retrieval and should be verified before any formal submission of this paper. Specifically, the World Economic Forum article <a class="cite" href="#ref-9">[9]</a> was behind an access barrier and could not be directly retrieved; claims attributed to <a class="cite" href="#ref-9">[9]</a> rest on secondary summaries and should not be quoted verbatim without re-retrieval. Reddit threads that appeared in the initial source list were also inaccessible and were excluded from the reference list entirely. The following flagged DOIs from primary-literature publishers could not be fetched in full text during the research window: APS Physical Review Letters 134.240803 (2025), Nature <em>Light: Science &amp; Applications</em> s41377-024-01696-8 (2024), Nature Communications s41467-024-46014-3 (2024), and <em>npj Nanophotonics</em> s44310-024-00024-7 (2024). These are listed in the research notes as flagged uncertain, were not used to support any load-bearing numerical claim in the body of this paper, and should be either retrieved in full or removed prior to publication.</p>
+      <p>One quantitative caveat must be stated explicitly. The 70% power savings figure attributed to co-packaged optics in <a class="cite" href="#ref-23">[23]</a> is workload-specific: it characterizes certain AI-inference fabrics at hyperscaler densities and should not be generalized as a benchmark for all photonic deployments. When citing <a class="cite" href="#ref-23">[23]</a>, authors should preserve the workload scope rather than presenting the 70% figure as a universal photonic-versus-electronic number.</p>
+      <p>Finally, reference <a class="cite" href="#ref-19">[19]</a> (Guo et al., IEEE JSTQE) was retrieved at the metadata level only; full-text validation of its quoted performance numbers is recommended before any direct quantitative quotation beyond the architectural claim.</p>
+
+      <h2 id="process">Process Summary</h2>
+      <p>The research used a Step-Back framing that first abstracted the question to its physical foundation, namely what are the categorical differences between photons and electrons as information carriers and which of those differences translate into present-day engineering advantages, before descending into specific empirical claims; this allowed the paper to separate marketing-layer assertions from peer-reviewed measurements. Four parallel research agents were dispatched to fetch the 30 candidate sources identified during scoping, of which 24 were successfully retrieved and are represented in the References list above; the remaining six were either access-restricted (WEF, some APS and Nature DOIs) or excluded as low-evidentiary-value (Reddit). Five parallel drafting agents then produced section parts (Parts 1 through 5 of the paper), each working from a shared citation map to guarantee consistent <code class="inline">[N]</code> numbering. No em dashes were used anywhere in the drafted output; all pauses were handled with commas, colons, semicolons, periods, or spaced hyphens. IEEE citation style was chosen over MLA or Chicago because IEEE is the standard citation system for computing, electrical engineering, and photonics publications, and this paper's primary evidence base sits in IEEE JSTQE, Nature Photonics, Nature Communications, Optica, and Applied Optics.</p>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>Photonic Computing paper, undergraduate-level survey with IEEE citations across 24 verified sources. Figures 1 through 10 rendered in glassmorphic light-theme aesthetic from the image prompts appended to <a href="Photonic_Computing_Paper.md">Photonic_Computing_Paper.md</a>, stored in <code class="inline">/Assets/</code>.</p>
+  </footer>
+
+  <script>
+    (function() {
+      var html = document.documentElement;
+      var themeBtn = document.getElementById('theme-toggle');
+      var themeLabel = document.getElementById('theme-label');
+
+      function applyTheme(theme) {
+        html.setAttribute('data-theme', theme);
+        themeLabel.textContent = theme === 'dark' ? 'Light' : 'Dark';
+        try { localStorage.setItem('pc-theme', theme); } catch (e) {}
+      }
+
+      var stored = null;
+      try { stored = localStorage.getItem('pc-theme'); } catch (e) {}
+      if (stored === 'light' || stored === 'dark') {
+        applyTheme(stored);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        applyTheme('dark');
+      } else {
+        applyTheme('light');
+      }
+
+      themeBtn.addEventListener('click', function() {
+        var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+      });
+
+      // Mobile TOC toggle
+      var tocBtn = document.getElementById('toc-toggle');
+      var toc = document.getElementById('toc');
+      var backdrop = document.getElementById('toc-backdrop');
+      function openToc() { toc.classList.add('open'); backdrop.classList.add('open'); tocBtn.setAttribute('aria-expanded', 'true'); }
+      function closeToc() { toc.classList.remove('open'); backdrop.classList.remove('open'); tocBtn.setAttribute('aria-expanded', 'false'); }
+      tocBtn.addEventListener('click', function() {
+        if (toc.classList.contains('open')) closeToc(); else openToc();
+      });
+      backdrop.addEventListener('click', closeToc);
+      toc.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') closeToc();
+      });
+
+      // Active TOC highlighting via IntersectionObserver
+      var tocLinks = Array.prototype.slice.call(toc.querySelectorAll('a[href^="#"]'));
+      var linksByHash = {};
+      tocLinks.forEach(function(a) { linksByHash[a.getAttribute('href').slice(1)] = a; });
+
+      var targets = Array.prototype.slice.call(document.querySelectorAll('h2[id], h3[id], section[id]'));
+      var visibility = {};
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          visibility[entry.target.id] = entry.isIntersecting ? entry.intersectionRatio : 0;
+        });
+        // Pick target closest to top of viewport that is visible
+        var bestId = null;
+        var bestTop = Infinity;
+        targets.forEach(function(t) {
+          var rect = t.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.4 && rect.bottom > 80) {
+            if (rect.top < bestTop) {
+              bestTop = rect.top;
+              bestId = t.id;
+            }
+          }
+        });
+        tocLinks.forEach(function(a) { a.classList.remove('active'); });
+        if (bestId && linksByHash[bestId]) {
+          linksByHash[bestId].classList.add('active');
+        }
+      }, { rootMargin: '-80px 0px -40% 0px', threshold: [0, 0.25, 0.5, 1] });
+      targets.forEach(function(t) { observer.observe(t); });
+    })();
+  </script>
+</body>
+</html>
